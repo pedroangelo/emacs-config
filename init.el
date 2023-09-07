@@ -18,3 +18,13 @@
 
 ;; disable menu bar
 (menu-bar-mode -1)
+
+;; line numbers
+(global-display-line-numbers-mode t)
+;; (setq display-line-numbers-type 'relative)
+
+;; thin cursor
+;; (setq-default cursor-type 'bar)
+
+;; Remember and restore the last cursor location of opened files
+(save-place-mode 1)

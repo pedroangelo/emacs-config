@@ -13,4 +13,5 @@
 # Other files and directories
 auto-save-list/
 elpa/
+places
 session.*
