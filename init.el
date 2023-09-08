@@ -28,3 +28,6 @@
 
 ;; Remember and restore the last cursor location of opened files
 (save-place-mode 1)
+
+;; display matching parenthesis
+(show-paren-mode 1)
