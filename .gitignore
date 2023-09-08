@@ -13,5 +13,6 @@
 # Other files and directories
 auto-save-list/
 elpa/
+eshell/
 places
 session.*

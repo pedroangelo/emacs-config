@@ -1,3 +1,4 @@
+;; INITIAL CONFIGS
 (require 'package)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -5,12 +6,25 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-archives
-   (quote
-    (("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/")))))
+   '(("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/")))
+ '(package-selected-packages '(haskell-mode solarized-theme)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 (package-initialize)
 
-;; disable electric-indent-mode
+;; CUSTOM SCRIPTS
+
+;; automatic package installer
+(load "~/.emacs.d/auto-package-installer")
+
+;; CUSTOMIZATION OPTIONS
+
+; disable electric-indent-mode
 (electric-indent-mode -1)
 
 ;; disable tool bar
@@ -21,13 +35,17 @@
 
 ;; line numbers
 (global-display-line-numbers-mode t)
-;; (setq display-line-numbers-type 'relative)
-
-;; thin cursor
-;; (setq-default cursor-type 'bar)
 
 ;; Remember and restore the last cursor location of opened files
 (save-place-mode 1)
 
 ;; display matching parenthesis
 (show-paren-mode 1)
+
+;; unused customization options
+
+;; display line numbers relative to current cursor line
+;; (setq display-line-numbers-type 'relative)
+
+;; display thin cursor
+;; (setq-default cursor-type 'bar)
