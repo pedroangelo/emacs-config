@@ -22,6 +22,9 @@
 ;; automatic package installer
 (load "~/.emacs.d/auto-package-installer")
 
+;; automatic theme changer
+;; (load "~/.emacs.d/auto-theme-changer")
+
 ;; CUSTOMIZATION OPTIONS
 
 ; disable electric-indent-mode
@@ -49,3 +52,7 @@
 
 ;; display thin cursor
 ;; (setq-default cursor-type 'bar)
+
+;; default tab width
+;; (setq-default tab-width 2)
+
