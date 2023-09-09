@@ -4,13 +4,13 @@
 ;; list packages
 (setq package-list
       '(haskell-mode
-	solarized-theme))
+				solarized-theme))
 
 ;; get list of available packages
 (unless package-archive-contents
-  (package-refresh-contents))
+  (ignore-errors (package-refresh-contents)))
 
 ;; install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
-    (package-install package)))
+    (ignore-errors (package-install package))))
