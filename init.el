@@ -24,10 +24,10 @@
 ;; CUSTOM SCRIPTS
 
 ;; set custom options, such as setting variables and enabling / disabling modes
-(load "~/.emacs.d/set-custom-options")
+(load "~/.emacs.d/scripts/set-custom-options")
 
 ;; automatic package installer
-(load "~/.emacs.d/auto-package-installer")
+(load "~/.emacs.d/scripts/auto-package-installer")
 
 ;; automatic theme changer
 ;; (load "~/.emacs.d/auto-theme-changer")
