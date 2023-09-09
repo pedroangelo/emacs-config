@@ -1,4 +1,5 @@
 ;; INITIAL CONFIGS
+
 (require 'package)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -45,6 +46,9 @@
 ;; display matching parenthesis
 (show-paren-mode 1)
 
+;; default tab width
+(setq-default tab-width 2)
+
 ;; unused customization options
 
 ;; display line numbers relative to current cursor line
@@ -52,7 +56,4 @@
 
 ;; display thin cursor
 ;; (setq-default cursor-type 'bar)
-
-;; default tab width
-;; (setq-default tab-width 2)
 
