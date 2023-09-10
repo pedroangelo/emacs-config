@@ -1,13 +1,8 @@
 ;; AUTO THEME CHANGER
 ;; automatically changes theme according to time of day
 
+;(load-theme 'solarized-light t)
+(load-theme 'solarized-dark t)
 
 ;; set variable with current theme
-(setq current-theme ('solarized-light))
-
-(defun auto-theme-changer ()
-	(setq hour 
-				(string-to-number 
-				 (substring (current-time-string) 11 13)))
-	(if (member hour (number-sequence 8 20))
-			(setq chosen-theme ('
+;(setq current-theme ('solarized-light))

@@ -30,4 +30,4 @@
 (load "~/.emacs.d/scripts/auto-package-installer")
 
 ;; automatic theme changer
-;; (load "~/.emacs.d/auto-theme-changer")
+(load "~/.emacs.d/scripts/auto-theme-changer")
