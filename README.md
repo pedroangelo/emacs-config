@@ -2,10 +2,6 @@
 My personal emacs configuration files
 
 ## todo
-- define test-internet-connection: check if there's internet connection or not, set has-internet-connection as true or false
-- improve auto-package-installer:
-	- if package-archive-contents is false then if has-internet-connection test is true:  install missing packages
-	- ignore eventual errors: ignore-errors
 - define theme-handler:
 	- set target-themes: solarized-light, solarized-dark
 	- define load-themes: load each of target-themes
