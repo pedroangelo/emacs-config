@@ -18,6 +18,9 @@
 ;; display matching parenthesis
 (show-paren-mode 1)
 
+;; wrap text at words
+(global-visual-line-mode t)
+
 ;; ENABLE / DISABLE MODES
 
 ;; default tab width
