@@ -18,13 +18,13 @@
 ;; display matching parenthesis
 (show-paren-mode 1)
 
-;; wrap text at words
-(global-visual-line-mode t)
-
 ;; ENABLE / DISABLE MODES
 
 ;; default tab width
 (setq-default tab-width 2)
+
+;; wrap text at words (treats as not having a newline at the end)
+(setq-default word-wrap t)
 
 ;; UNUSED
 
@@ -34,3 +34,5 @@
 ;; display thin cursor
 ;; (setq-default cursor-type 'bar)
 
+;; wrap text at words (treats as having a newline at the end)
+;; (global-visual-line-mode t)
