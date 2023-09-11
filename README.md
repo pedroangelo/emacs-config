@@ -2,6 +2,8 @@
 My personal emacs configuration files
 
 ## todo
+- improve auto-package-installer:
+	- if ping fails, try a http connection
 - define theme-handler:
 	- set target-themes: solarized-light, solarized-dark
 	- define load-themes: load each of target-themes
