@@ -36,3 +36,6 @@
 
 ;; wrap text at words (treats as having a newline at the end)
 ;; (global-visual-line-mode t)
+
+;; update buffer when file changes on disk
+;; (global-auto-revert-mode 1)
