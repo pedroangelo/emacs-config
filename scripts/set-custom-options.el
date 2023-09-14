@@ -38,4 +38,4 @@
 ;; (global-visual-line-mode t)
 
 ;; update buffer when file changes on disk
-;; (global-auto-revert-mode 1)
+(global-auto-revert-mode 1)
