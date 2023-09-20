@@ -26,6 +26,9 @@
 		  (setq current-theme new-theme)
 			(load-theme current-theme t)))
 
+;; update theme on start
+(auto-dark-mode)
+
 ;; update theme at specific times
 (run-at-time "05:00" 3600 'auto-dark-mode)
 (run-at-time "20:00" 3600 'auto-dark-mode)
