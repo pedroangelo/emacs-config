@@ -16,6 +16,7 @@
 ;; (car (nth 1 chosen-themes))
 ;; (cdr (nth 1 chosen-themes))
 ;; (concat (number-to-string (get-current-hour)) ":" (number-to-string (get-current-minute)))
+;; (setq time-interval (cons (time-string-to-date "19:00") (cons (time-string-to-date "18:00") nil)))
 
 (defun time-date-to-string (date)
 	"convert date format (pair) to string"
@@ -26,14 +27,18 @@
 	(cons (string-to-number (substring string 0 2)) (string-to-number (substring string 3 5))))
 
 (defun get-current-hour ()
-	"get the current hour as a string"
+	"get the current hour as number as a number"
 	(string-to-number 
 	 (substring (current-time-string) 11 13)))
 
 (defun get-current-minute ()
-	"get the current minute as a string"
+	"get the current minute as a number"
 	(string-to-number 
 	 (substring (current-time-string) 14 16)))
+
+(defun get-current-time ()
+	"get current time in format (hh . mm)"
+	(cons (get-current-hour) (get-current-minute)))
 
 (defun get-list-starting-times ()
 	"return a list of starting times"
@@ -63,30 +68,37 @@
 ;; 	"check which theme to choose according to current time of day"
 ;; 	(nil))
 
-(defun is-time-before-p (hour1 minute1 hour2 minute2)
-	"check if hour1:minute1 happens before hour2:minute2 "
-	(if (or (< hour1 hour2) (and (= hour1 hour2) (<= minute1 minute2))) t nil))
+(defun is-time-before-inclusive-p (time1 time2)
+	"check if time1 happens before time2, including time1 equals time2"
+	(if (or (< (car time1) (car time2)) 
+					(and (= (car time1) (car time2)) 
+							 (<= (cdr time1) (cdr time2)))) t nil))
 
-(defun is-time-after-p (hour1 minute1 hour2 minute2)
-	"check if hour1:minute1 happens after hour2:minute2 "
-	(if (or (> hour1 hour2) (and (= hour1 hour2) (> minute1 minute2))) t nil))
+(defun is-time-before-exclusive-p (time1 time2)
+	"check if time1 happens before time2, excluding time1 equals time2"
+	(if (or (< (car time1) (car time2)) 
+					(and (= (car time1) (car time2)) 
+							 (< (cdr time1) (cdr time2)))) t nil))
 
 (defun current-time-interval-p (time-interval)
-	"check if current time is within times of argument"
-	(setq current-hour (get-current-hour))
-	(setq current-minute (get-current-minute))
-	(setq starting-hour (string-to-number (substring (car time-interval) 0 2)))
-	(setq starting-minute (string-to-number (substring (car time-interval) 3 5)))
-	(setq ending-hour (string-to-number (substring (cdr time-interval) 0 2)))
-	(setq ending-minute (string-to-number (substring (cdr time-interval) 3 5)))
+	"check if current time is within argument time interval"
+	(setq current-time (get-current-time))
+	(setq starting-time (car time-interval))
+	(setq ending-time (car (cdr time-interval)))
 	; check if midnight is within time interval or not
-	(if (is-time-before-p starting-hour starting-minute ending-hour ending-minute)
+	(if (is-time-before-inclusive-p starting-time ending-time)
+			; then do a simple comparison
 			(and
-			 (is-time-before-p starting-hour starting-minute current-hour current-minute)
-			 (is-time-after-p ending-hour ending-minute current-hour current-minute))
+			 ; starting time comes before current time
+			 (is-time-before-inclusive-p starting-time current-time)
+			 ; current time comes before ending time
+			 (is-time-before-exclusive-p current-time ending-time))
+		  ; else 
 		  (or 
-			 (is-time-before-p starting-hour starting-minute current-hour current-minute)
-			 (is-time-after-p ending-hour ending-minute current-hour current-minute))))
+			 ; starting time comes before current time
+			 (is-time-before-inclusive-p starting-time current-time)
+			 ; current time comes before ending time
+			 (is-time-before-exclusive-p current-time ending-time))))
 
 ;; (defun auto-theme-changer ()
 ;; 	"change theme automatically according to time of day"

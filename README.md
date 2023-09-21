@@ -6,7 +6,6 @@ My personal emacs configuration files
 	- if ping fails, try a http connection
 - improve auto-theme-changer:
 	- finish implementation, then replace auto-dark-mode
-	- improve time-interval calculations regarding minutes
 	- set target-themes: solarized-light, solarized-dark
 	- check if target-themes are loaded
 	- custom-enabled-themes shows what themes are enabled, maybe avoid loading theme already enabled
