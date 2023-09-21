@@ -5,7 +5,7 @@
 (setq config-theme-rotation
 			'(("05:00" . solarized-light)
 				("19:30" . solarized-dark)
-				("22:00" . solarized-dark-high-contrast)))
+				("23:20" . solarized-dark-high-contrast)))
 
 ;; AUXILIARY FUNCTIONS AND VARIABLES
 
@@ -33,6 +33,10 @@
 (defun get-current-time ()
 	"get current time as a pair of numbers"
 	(cons (get-current-hour) (get-current-minute)))
+
+(defun get-list-starting-times-string ()
+	"get a list of starting times in the theme rotation, as strings"
+	(mapcar 'car config-theme-rotation))
 
 (defun get-list-starting-times ()
 	"get a list of starting times in the theme rotation"
@@ -130,7 +134,7 @@
 
 (defun set-all-theme-timers ()
 	"set timers for each theme's starting time"
-	(mapcar 'set-theme-timer themes-starting-time))
+	(mapcar 'set-theme-timer (get-list-starting-times-string)))
 
 ;; START AUTO-THEME-CHANGER AND TIMERS
 
