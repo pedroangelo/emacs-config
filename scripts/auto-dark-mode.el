@@ -1,4 +1,4 @@
-;; AUTO DARK MODE
+;; AUTO DARK MODE - DEPRECATED
 ;; automatically changes theme according to time of day
 ;; interesting themes: solarized-dark-high-contrast, solarized-light, solarized-selenized-dark, solarized-selenized-white
 

@@ -31,5 +31,5 @@
 ;; automatic package installer
 (load "~/.emacs.d/scripts/auto-package-installer")
 
-;; automatic dark mode theme changer
-(load "~/.emacs.d/scripts/auto-dark-mode")
+;; automatic theme changer
+(load "~/.emacs.d/scripts/auto-theme-changer")

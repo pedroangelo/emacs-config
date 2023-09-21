@@ -2,9 +2,9 @@
 ;; automatically changes theme according to chosen times
 
 ; configuration of starting times for specific themes
-(setq config-times-themes
+(setq config-theme-rotation
 			'(("05:00" . solarized-light)
-				("18:00" . solarized-dark)
+				("19:30" . solarized-dark)
 				("22:00" . solarized-dark-high-contrast)))
 
 ;; AUXILIARY FUNCTIONS AND VARIABLES
@@ -12,22 +12,16 @@
 ; set variable with current theme
 (setq current-theme nil)
 
-;; (nth 1 chosen-themes)
-;; (car (nth 1 chosen-themes))
-;; (cdr (nth 1 chosen-themes))
-;; (concat (number-to-string (get-current-hour)) ":" (number-to-string (get-current-minute)))
-;; (setq time-interval (cons (time-string-to-date "19:00") (cons (time-string-to-date "18:00") nil)))
-
-(defun time-date-to-string (date)
-	"convert date format (pair) to string"
+(defun convert-time-pair-to-string (date)
+	"convert date pair format to string"
 	(concat (number-to-string (car date)) ":" (number-to-string (cdr date))))
 
-(defun time-string-to-date (string)
-	"convert string to date format (pair)"
+(defun convert-time-string-to-pair (string)
+	"convert date string format to pair"
 	(cons (string-to-number (substring string 0 2)) (string-to-number (substring string 3 5))))
 
 (defun get-current-hour ()
-	"get the current hour as number as a number"
+	"get the current hour as a number"
 	(string-to-number 
 	 (substring (current-time-string) 11 13)))
 
@@ -37,81 +31,101 @@
 	 (substring (current-time-string) 14 16)))
 
 (defun get-current-time ()
-	"get current time in format (hh . mm)"
+	"get current time as a pair of numbers"
 	(cons (get-current-hour) (get-current-minute)))
 
 (defun get-list-starting-times ()
-	"return a list of starting times"
-	(mapcar 'car config-times-themes))
+	"get a list of starting times in the theme rotation"
+	(mapcar 'convert-time-string-to-pair (mapcar 'car config-theme-rotation)))
 
 (defun get-list-themes ()
-	"list of themes"
-	(mapcar 'cdr config-times-themes))
+	"get a list of themes in the theme rotation"
+	(mapcar 'cdr config-theme-rotation))
 
 (defun get-list-time-intervals ()
-	"from config-times-themes list, build list with pairs of time intervals"
+	"get list of time intervals from theme rotation"
+	; build list of time intervals except the last that loops around
 	(setq time-intervals
-				(cl-mapcar #'cons (get-list-starting-times) (cdr (get-list-starting-times))))
+				(cl-mapcar #'cons
+									 (get-list-starting-times) 
+									 (cdr (get-list-starting-times))))
+	; build last element of list of time intervals, the one that loops around
 	(setq final-time-interval
-				(cons 
-				 (nth (- (length (get-list-starting-times)) 1) (get-list-starting-times))
-				 (nth 0 (get-list-starting-times))))
+				; join last starting time with first starting time
+				(cons (nth (- (length (get-list-starting-times)) 1) (get-list-starting-times))
+							(nth 0 (get-list-starting-times))))
+	; return complete list
 	(append time-intervals (cons final-time-interval nil)))
 
 (defun get-list-time-intervals-themes ()
-	"from config-times-themes list, build list with pairs of time intervals and corresponding themes"
+	"get list of time intervals with list of themes, both from the theme rotation"
+	; zip list of time intervals with list of themes
 	(cl-mapcar #'cons (get-list-time-intervals) (get-list-themes)))
 
-;; MAIN FUNCTIONALITY
-
-;; (defun get-new-theme ()
-;; 	"check which theme to choose according to current time of day"
-;; 	(nil))
-
 (defun is-time-before-inclusive-p (time1 time2)
-	"check if time1 happens before time2, including time1 equals time2"
+	"return t if time in first argument happens before time in second argument, or if both are equal"
 	(if (or (< (car time1) (car time2)) 
 					(and (= (car time1) (car time2)) 
 							 (<= (cdr time1) (cdr time2)))) t nil))
 
 (defun is-time-before-exclusive-p (time1 time2)
-	"check if time1 happens before time2, excluding time1 equals time2"
+	"return t if time in first argument strictly happens before time in second argument"
 	(if (or (< (car time1) (car time2)) 
 					(and (= (car time1) (car time2)) 
 							 (< (cdr time1) (cdr time2)))) t nil))
 
 (defun current-time-interval-p (time-interval)
-	"check if current time is within argument time interval"
+	"return t if current time is within argument time interval"
 	(setq current-time (get-current-time))
 	(setq starting-time (car time-interval))
-	(setq ending-time (car (cdr time-interval)))
+	(setq ending-time (cdr time-interval))
 	; check if midnight is within time interval or not
 	(if (is-time-before-inclusive-p starting-time ending-time)
-			; then do a simple comparison
+			; if midnight is not within time interval
 			(and
-			 ; starting time comes before current time
+			 ; check if starting time comes before current time and
 			 (is-time-before-inclusive-p starting-time current-time)
-			 ; current time comes before ending time
+			 ; check if current time comes before ending time
 			 (is-time-before-exclusive-p current-time ending-time))
-		  ; else 
+		  ; if midnight is with time interval
 		  (or 
-			 ; starting time comes before current time
+			 ; check if starting time comes before current time or
 			 (is-time-before-inclusive-p starting-time current-time)
-			 ; current time comes before ending time
+			 ; check if current time comes before ending time
 			 (is-time-before-exclusive-p current-time ending-time))))
 
-;; (defun auto-theme-changer ()
-;; 	"change theme automatically according to time of day"
-;; 	(setq new-theme get-new-theme)
-;; 	(if (equal new-theme current-theme)
-;; 			nil
-;; 		  (setq current-theme new-theme)
-;; 			(load-theme current-theme t)))
+;; MAIN FUNCTIONALITY
+
+(defun get-new-theme ()
+	"get appropriate theme from theme rotation according to current time of day"
+	; set counter to 0
+	(setq i 0)
+	(setq chosen-theme nil)
+	; loop on all themes and respective intervals
+	(while (/= i (length config-theme-rotation))
+				 (setq theme (nth i (get-list-time-intervals-themes)))
+				 ; if theme's interval contains the current time
+				 (if (current-time-interval-p (car theme))
+						 (progn
+							; change chosen theme
+							(setq chosen-theme (cdr theme))
+							; update counter to break out of loop
+							(setq i (length config-theme-rotation)))
+					   (setq i (+ i 1))))
+	chosen-theme)
+
+(defun auto-theme-changer ()
+	"change theme automatically according to time of day"
+	(setq new-theme (get-new-theme))
+	(if (equal new-theme current-theme)
+			nil
+		  (setq current-theme new-theme)
+			(load-theme current-theme t)))
 
 ;; TIMERS
 
 (defun set-theme-timer (time)
-	"set a timer to call theme changer function"
+	"set a timer to call theme changer function every hour"
 	(run-at-time time 3600 'auto-theme-changer))
 
 (defun set-all-theme-timers ()
@@ -120,5 +134,8 @@
 
 ;; START AUTO-THEME-CHANGER AND TIMERS
 
-;; ;; update theme on start
-;; (auto-theme-changer)
+;; update theme on start
+(auto-theme-changer)
+
+;; start timers
+(set-all-theme-timers)
