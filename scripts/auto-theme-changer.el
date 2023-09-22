@@ -4,8 +4,8 @@
 ; configuration of starting times for specific themes
 (setq config-theme-rotation
 			'(("05:00" . solarized-light)
-				("19:30" . solarized-dark)
-				("23:20" . solarized-dark-high-contrast)))
+				("18:30" . solarized-dark)
+				("22:30" . solarized-dark-high-contrast)))
 
 ;; AUXILIARY FUNCTIONS AND VARIABLES
 
