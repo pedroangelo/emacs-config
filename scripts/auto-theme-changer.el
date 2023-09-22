@@ -129,8 +129,8 @@
 ;; TIMERS
 
 (defun set-theme-timer (time)
-	"set a timer to call theme changer function every hour"
-	(run-at-time time 3600 'auto-theme-changer))
+	"set a timer to call theme changer function every day"
+	(run-at-time time 86400 'auto-theme-changer))
 
 (defun set-all-theme-timers ()
 	"set timers for each theme's starting time"
