@@ -1,6 +1,11 @@
 ;; INITIAL CONFIGS
 
+(eval-when-compile
+  ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  (add-to-list 'load-path (expand-file-name "scripts" user-emacs-directory))
+  (require 'use-package))
 (require 'package)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,17 +35,17 @@
 ;; automatic package installer
 (load "~/.emacs.d/scripts/auto-package-installer")
 
-;; automatic theme changer
-(setq user-theme-rotation
-			'(("05:00" . solarized-light)
-				("18:30" . solarized-dark)
- 				("22:30" . solarized-dark-high-contrast)))
-(load "~/.emacs.d/scripts/auto-theme-changer")
+;; ;; automatic theme changer
+;; (setq user-theme-rotation
+;; 			'(("05:00" . solarized-light)
+;; 				("18:30" . solarized-dark)
+;;  				("22:30" . solarized-dark-high-contrast)))
+;; (load "~/.emacs.d/scripts/auto-theme-changer")
 
-;; (use-package auto-theme-changer
-;; 	:load-path "scripts/auto-package-installer.el"
-;; 	:init
-;; 	(setq user-theme-rotation
-;; 				'(("05:00" . solarized-light)
-;; 					("18:30" . solarized-dark)
-;; 					("22:30" . solarized-dark-high-contrast))))
+(use-package auto-theme-changer
+	:load-path "scripts/auto-theme-changer.el"
+	:init
+	(setq user-theme-rotation
+				'(("05:00" . solarized-light)
+					("18:30" . solarized-dark)
+					("22:30" . solarized-dark-high-contrast))))
