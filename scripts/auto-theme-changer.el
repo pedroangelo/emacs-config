@@ -1,11 +1,24 @@
 ;; AUTO THEME CHANGER
 ;; automatically changes theme according to chosen times
 
-; configuration of starting times for specific themes
-(setq config-theme-rotation
-			'(("05:00" . solarized-light)
-				("18:30" . solarized-dark)
-				("22:30" . solarized-dark-high-contrast)))
+; user-provided theme rotation configuration
+; (setq user-theme-rotation nil)
+
+; default theme rotation configuration
+(setq default-theme-rotation
+			'(("08:00" . tsdh-light)
+				("20:00" . tsdh-dark)))
+
+; configuration of theme rotation, composed of starting times for specific themes
+(setq theme-rotation
+			(if (boundp 'user-theme-rotation)
+					user-theme-rotation
+				default-theme-rotation))
+
+;; (setq user-theme-rotation
+;; 			'(("05:00" . solarized-light)
+;; 				("18:30" . solarized-dark)
+;; 				("22:30" . solarized-dark-high-contrast)))
 
 ;; AUXILIARY FUNCTIONS AND VARIABLES
 
@@ -36,15 +49,15 @@
 
 (defun get-list-starting-times-string ()
 	"get a list of starting times in the theme rotation, as strings"
-	(mapcar 'car config-theme-rotation))
+	(mapcar 'car theme-rotation))
 
 (defun get-list-starting-times ()
 	"get a list of starting times in the theme rotation"
-	(mapcar 'convert-time-string-to-pair (mapcar 'car config-theme-rotation)))
+	(mapcar 'convert-time-string-to-pair (mapcar 'car theme-rotation)))
 
 (defun get-list-themes ()
 	"get a list of themes in the theme rotation"
-	(mapcar 'cdr config-theme-rotation))
+	(mapcar 'cdr theme-rotation))
 
 (defun get-list-time-intervals ()
 	"get list of time intervals from theme rotation"
@@ -106,7 +119,7 @@
 	(setq i 0)
 	(setq chosen-theme nil)
 	; loop on all themes and respective intervals
-	(while (/= i (length config-theme-rotation))
+	(while (/= i (length theme-rotation))
 				 (setq theme (nth i (get-list-time-intervals-themes)))
 				 ; if theme's interval contains the current time
 				 (if (current-time-interval-p (car theme))
@@ -114,7 +127,7 @@
 							; change chosen theme
 							(setq chosen-theme (cdr theme))
 							; update counter to break out of loop
-							(setq i (length config-theme-rotation)))
+							(setq i (length theme-rotation)))
 					   (setq i (+ i 1))))
 	chosen-theme)
 
@@ -143,3 +156,5 @@
 
 ;; start timers
 (set-all-theme-timers)
+
+(provide 'auto-theme-changer) 

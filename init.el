@@ -12,7 +12,8 @@
  '(package-archives
 	 '(("gnu" . "https://elpa.gnu.org/packages/")
 		 ("melpa" . "https://melpa.org/packages/")))
- '(package-selected-packages '(solarized-theme haskell-mode)))
+ '(package-selected-packages
+	 '(auto-theme-changer use-package solarized-theme haskell-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,4 +31,16 @@
 (load "~/.emacs.d/scripts/auto-package-installer")
 
 ;; automatic theme changer
+(setq user-theme-rotation
+			'(("05:00" . solarized-light)
+				("18:30" . solarized-dark)
+ 				("22:30" . solarized-dark-high-contrast)))
 (load "~/.emacs.d/scripts/auto-theme-changer")
+
+;; (use-package auto-theme-changer
+;; 	:load-path "scripts/auto-package-installer.el"
+;; 	:init
+;; 	(setq user-theme-rotation
+;; 				'(("05:00" . solarized-light)
+;; 					("18:30" . solarized-dark)
+;; 					("22:30" . solarized-dark-high-contrast))))

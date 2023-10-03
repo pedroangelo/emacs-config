@@ -4,7 +4,8 @@
 ;; set list of packages to install
 (setq package-list
       '(haskell-mode
-				solarized-theme))
+				solarized-theme
+				use-package))
 
 ;; function to test for internet connection
 (defun test-internet-connection (&optional host)
