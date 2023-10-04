@@ -1,9 +1,5 @@
 ;; INITIAL CONFIGS
 
-(eval-when-compile
-  ;; Following line is not needed if use-package.el is in ~/.emacs.d
-  (add-to-list 'load-path (expand-file-name "scripts" user-emacs-directory))
-  (require 'use-package))
 (require 'package)
 
 (custom-set-variables
@@ -27,7 +23,7 @@
  )
 (package-initialize)
 
-;; CUSTOM SCRIPTS
+;; CUSTOM SCRIPTS FOLDER
 
 ;; set custom options, such as setting variables and enabling / disabling modes
 (load "~/.emacs.d/scripts/set-custom-options")
@@ -35,17 +31,5 @@
 ;; automatic package installer
 (load "~/.emacs.d/scripts/auto-package-installer")
 
-;; ;; automatic theme changer
-;; (setq user-theme-rotation
-;; 			'(("05:00" . solarized-light)
-;; 				("18:30" . solarized-dark)
-;;  				("22:30" . solarized-dark-high-contrast)))
-;; (load "~/.emacs.d/scripts/auto-theme-changer")
-
-(use-package auto-theme-changer
-	:load-path "scripts/auto-theme-changer.el"
-	:init
-	(setq user-theme-rotation
-				'(("05:00" . solarized-light)
-					("18:30" . solarized-dark)
-					("22:30" . solarized-dark-high-contrast))))
+;; use-package options and configs
+(load "~/.emacs.d/scripts/use-package-config")

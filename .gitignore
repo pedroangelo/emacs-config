@@ -16,3 +16,5 @@ elpa/
 eshell/
 places
 session.*
+.last-package-update-day
+url/

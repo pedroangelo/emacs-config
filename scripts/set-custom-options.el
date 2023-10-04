@@ -18,6 +18,9 @@
 ;; display matching parenthesis
 (show-paren-mode 1)
 
+;; update buffer when file changes on disk
+(global-auto-revert-mode 1)
+
 ;; ENABLE / DISABLE MODES
 
 ;; default tab width
@@ -36,6 +39,3 @@
 
 ;; wrap text at words (treats as having a newline at the end)
 ;; (global-visual-line-mode t)
-
-;; update buffer when file changes on disk
-(global-auto-revert-mode 1)
