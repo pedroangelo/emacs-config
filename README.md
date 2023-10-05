@@ -10,6 +10,11 @@ My personal emacs configuration files
 	- custom-enabled-themes shows what themes are enabled, maybe avoid loading theme already enabled
 - use-package:
 	- better understand why we need to place paths in load-path variable
+- customize splash screen:
+	- add option to reload last session
+	- add option to favourite files and folders
+	- list favourites in splash screen for easy loading
+	- display key-bind tool-tip
 
 ## Resources
 - https://unkertmedia.com/how-to-setup-emacs-for-web-development/
