@@ -39,3 +39,6 @@
 
 ;; wrap text at words (treats as having a newline at the end)
 ;; (global-visual-line-mode t)
+
+;; save previous emacs session
+;(desktop-save-mode 1)

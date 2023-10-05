@@ -4,6 +4,7 @@ My personal emacs configuration files
 ## todo
 - improve auto-package-installer:
 	- if ping fails, try a http connection
+- save previous session so it's easier and faster to proceed work
 - improve auto-theme-changer:
 	- format / organize code so it can be shipped as a package
 	- place into it's own github repo
