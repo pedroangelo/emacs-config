@@ -158,3 +158,4 @@
 (set-all-theme-timers)
 
 (provide 'auto-theme-changer) 
+;;; auto-theme-changer.el ends here

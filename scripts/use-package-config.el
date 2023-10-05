@@ -1,7 +1,7 @@
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
-  (add-to-list 'load-path (expand-file-name "scripts" user-emacs-directory))
 	(add-to-list 'load-path (expand-file-name "packages/whisper" user-emacs-directory))
+	(add-to-list 'load-path (expand-file-name "packages/auto-theme-changer" user-emacs-directory))
   (require 'use-package))
 
 ;; install missing packages
@@ -22,7 +22,7 @@
 (use-package solarized-theme)
 
 (use-package auto-theme-changer
-	:load-path "~/.emacs.d/scripts/auto-theme-changer.el"
+	:load-path "~/.emacs.d/packages/auto-theme-changer/auto-theme-changer.el"
 	:init
 	(setq user-theme-rotation
 				'(("05:00" . solarized-light)
