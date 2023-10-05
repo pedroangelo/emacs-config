@@ -5,7 +5,6 @@
   (require 'use-package))
 
 ;; install missing packages
-;; 
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
@@ -34,7 +33,8 @@
   :load-path "~/.emacs.d/packages/whisper/whisper.el"
   :bind ("C-H-r" . whisper-run)
   :config
-  (setq whisper-install-directory "/tmp/"
-        whisper-model "base"
-        whisper-language "en"
-        whisper-translate nil))
+  (setq whisper-install-directory "~/.local/lib"
+				whisper-language "en"
+				whisper-model "tiny" ;; model options: tiny, base, small, medium, large
+        whisper-translate nil
+				whisper-enable-speed-up nil))

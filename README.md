@@ -8,8 +8,6 @@ My personal emacs configuration files
 	- solve issue, where when converting time to pair format, extra 0's are lost
 	- check if themes are loaded, if not use default theme rotation
 	- custom-enabled-themes shows what themes are enabled, maybe avoid loading theme already enabled
-- use-package:
-	- better understand why we need to place paths in load-path variable
 - customize splash screen:
 	- add option to reload last session
 	- add option to favourite files and folders
