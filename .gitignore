@@ -18,3 +18,4 @@ places
 session.*
 .last-package-update-day
 url/
+.emacs.desktop

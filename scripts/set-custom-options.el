@@ -21,6 +21,9 @@
 ;; update buffer when file changes on disk
 (global-auto-revert-mode 1)
 
+;; save previous emacs session
+(desktop-save-mode 1)
+
 ;; ENABLE / DISABLE MODES
 
 ;; default tab width
@@ -39,6 +42,3 @@
 
 ;; wrap text at words (treats as having a newline at the end)
 ;; (global-visual-line-mode t)
-
-;; save previous emacs session
-;(desktop-save-mode 1)
