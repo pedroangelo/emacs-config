@@ -1,0 +1,6 @@
+[submodule "packages/whisper.el"]
+	path = packages/whisper.el
+	url = git@github.com:natrys/whisper.el.git
+[submodule "packages/whisper"]
+	path = packages/whisper
+	url = git@github.com:natrys/whisper.el.git

@@ -1,9 +1,11 @@
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (add-to-list 'load-path (expand-file-name "scripts" user-emacs-directory))
+	(add-to-list 'load-path (expand-file-name "packages/whisper" user-emacs-directory))
   (require 'use-package))
 
 ;; install missing packages
+;; 
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
@@ -28,3 +30,11 @@
 					("18:30" . solarized-dark)
 					("22:30" . solarized-dark-high-contrast))))
 
+(use-package whisper
+  :load-path "~/.emacs.d/packages/whisper/whisper.el"
+  :bind ("C-H-r" . whisper-run)
+  :config
+  (setq whisper-install-directory "/tmp/"
+        whisper-model "base"
+        whisper-language "en"
+        whisper-translate nil))
