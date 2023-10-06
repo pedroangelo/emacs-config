@@ -22,7 +22,7 @@
 (global-auto-revert-mode 1)
 
 ;; save previous emacs session
-(desktop-save-mode 1)
+;(desktop-save-mode 1)
 
 ;; ENABLE / DISABLE MODES
 

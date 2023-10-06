@@ -1,6 +1,17 @@
 ;; AUTO THEME CHANGER
 ;; automatically changes theme according to chosen times
 
+(defgroup auto-theme-changer ()
+  "Automatically change theme according to time of day."
+  :group 'external)
+
+(defcustom theme-rotation
+	'(("08:00" . tsdh-light)
+		("20:00" . tsdh-dark))
+	"Configuration of theme rotation, composed of starting times for specific themes."
+	:type '(set (cons string function))
+  :group 'auto-theme-changer)
+	
 ; user-provided theme rotation configuration
 ; (setq user-theme-rotation nil)
 
@@ -9,11 +20,11 @@
 			'(("08:00" . tsdh-light)
 				("20:00" . tsdh-dark)))
 
-; configuration of theme rotation, composed of starting times for specific themes
-(setq theme-rotation
-			(if (boundp 'user-theme-rotation)
-					user-theme-rotation
-				default-theme-rotation))
+;; ; configuration of theme rotation, composed of starting times for specific themes
+;; (setq theme-rotation
+;; 			(if (boundp 'user-theme-rotation)
+;; 					user-theme-rotation
+;; 				default-theme-rotation))
 
 ;; (setq user-theme-rotation
 ;; 			'(("05:00" . solarized-light)

@@ -24,7 +24,7 @@
 (use-package auto-theme-changer
 	:load-path "~/.emacs.d/packages/auto-theme-changer/auto-theme-changer.el"
 	:init
-	(setq user-theme-rotation
+	(setq theme-rotation
 				'(("05:00" . solarized-light)
 					("18:30" . solarized-dark)
 					("22:30" . solarized-dark-high-contrast))))
