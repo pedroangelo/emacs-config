@@ -24,6 +24,9 @@
 ;; save previous emacs session
 ;(desktop-save-mode 1)
 
+; set indentation to spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
 ;; ENABLE / DISABLE MODES
 
 ;; default tab width

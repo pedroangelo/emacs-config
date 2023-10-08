@@ -1,3 +1,6 @@
 [submodule "whisper.el"]
 	path = packages/whisper
 	url = git@github.com:natrys/whisper.el.git
+[submodule "theme-rotation.el"]
+	path = packages/theme-rotation
+	url = git@github.com:pedroangelo/theme-rotation.el.git
