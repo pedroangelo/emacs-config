@@ -26,11 +26,14 @@
 
 (use-package theme-rotation
 	:load-path "~/.emacs.d/packages/theme-rotation/theme-rotation.el"
-	:custom (theme-rotation-config
-					 '(("05:00" . solarized-light)
-						 ("18:30" . solarized-dark)
-						 ("22:30" . solarized-dark-high-contrast))
-					 "customize theme-rotation-config to apply dark-mode after 18:30."))
+	:custom
+  (theme-rotation-config 
+   '(("05:00" . solarized-light)
+		 ("18:30" . solarized-dark)
+		 ("22:30" . solarized-dark-high-contrast))
+	 "customize theme-rotation-config to apply dark-mode after 18:30.")
+  :config
+  (theme-rotation-mode))
 
 (use-package whisper
   :load-path "~/.emacs.d/packages/whisper/whisper.el"
