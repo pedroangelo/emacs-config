@@ -21,6 +21,9 @@
 
 (use-package solarized-theme)
 
+(use-package rainbow-mode
+  :hook (emacs-lisp-mode text-mode lisp-mode))
+
 (use-package theme-rotation
 	:load-path "~/.emacs.d/packages/theme-rotation/theme-rotation.el"
 	:custom (theme-rotation-config
