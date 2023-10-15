@@ -25,7 +25,7 @@
   :hook (emacs-lisp-mode text-mode lisp-mode))
 
 (use-package theme-rotation
-	:load-path "~/.emacs.d/packages/theme-rotation/theme-rotation.el"
+	:load-path "~/.emacs.d/packages/theme-rotation"
 	:custom
   (theme-rotation-config 
    '(("05:00" . solarized-light)
@@ -36,7 +36,7 @@
   (theme-rotation-mode))
 
 (use-package whisper
-  :load-path "~/.emacs.d/packages/whisper/whisper.el"
+  :load-path "~/.emacs.d/packages/whisper"
   :bind ("C-H-r" . whisper-run)
   :config
   (setq whisper-install-directory "~/.local/lib"
@@ -44,3 +44,10 @@
 				whisper-model "base" ;; model options: tiny, base, small, medium, large
         whisper-translate nil
 				whisper-enable-speed-up nil))
+
+(use-package markdown-mode
+  :ensure t
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "pandoc"))
