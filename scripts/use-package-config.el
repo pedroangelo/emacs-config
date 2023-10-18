@@ -24,16 +24,16 @@
 (use-package rainbow-mode
   :hook (emacs-lisp-mode text-mode lisp-mode))
 
-(use-package theme-rotation
-	:load-path "~/.emacs.d/packages/theme-rotation"
-	:custom
-  (theme-rotation-config 
-   '(("05:00" . solarized-light)
-		 ("18:30" . solarized-dark)
-		 ("22:30" . solarized-dark-high-contrast))
-	 "customize theme-rotation-config to apply dark-mode after 18:30.")
+(use-package circadian
+  :ensure t
   :config
-  (theme-rotation-mode))
+  (setq calendar-latitude 41.1)
+  (setq calendar-longitude -8.7)
+  (setq circadian-themes '((:sunrise . solarized-light)
+                           ("5:00" . solarized-light)
+                           (:sunset . solarized-dark)
+                           ("18:30" . solarized-dark)))
+  (circadian-setup))
 
 (use-package whisper
   :load-path "~/.emacs.d/packages/whisper"
