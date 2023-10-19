@@ -23,13 +23,14 @@
  )
 (package-initialize)
 
-;; CUSTOM SCRIPTS FOLDER
+(add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
+(require 'core)
 
-;; set custom options, such as setting variables and enabling / disabling modes
-(load "~/.emacs.d/scripts/set-custom-options")
+(add-to-list 'load-path (expand-file-name "features" user-emacs-directory))
+(require 'features)
 
-;; automatic package installer
-(load "~/.emacs.d/scripts/auto-package-installer")
+(add-to-list 'load-path (expand-file-name "languages" user-emacs-directory))
+(require 'languages)
 
-;; use-package options and configs
-(load "~/.emacs.d/scripts/use-package-config")
+(add-to-list 'load-path (expand-file-name "miscellaneous" user-emacs-directory))
+(require 'miscellaneous)
