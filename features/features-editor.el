@@ -31,6 +31,7 @@
             "Reload Configs" "Reload configurations from dot files"
             (lambda (&rest _) (load-file (expand-file-name "init.el" user-emacs-directory)))
             nil "" ""))))
+  (setq dashboard-footer-messages (split-string (file-to-string "~/MEGA/Hobbies e Interesses/Quotes") "\n"))
   :config
   (dashboard-setup-startup-hook))
 

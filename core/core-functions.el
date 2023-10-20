@@ -43,5 +43,11 @@
 ; install missing packages
 (install-missing-packages)
 
+(defun file-to-string (file)
+  "Read file contents and return as string"
+  (with-temp-buffer
+    (insert-file-contents file)
+    (buffer-string)))
+
 (provide 'core-functions)
 ;;; core-functions.el ends here
