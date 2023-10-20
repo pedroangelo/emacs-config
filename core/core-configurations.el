@@ -47,5 +47,12 @@
 ;; do not display tool bar
 (tool-bar-mode -1)
 
+;; KEY BINDINGS
+
+;; unset key bind to suspend emacs 
+(when (display-graphic-p)
+  (global-unset-key (kbd "C-z"))
+  (global-unset-key (kbd "C-x C-z")))
+
 (provide 'core-configurations)
 ;;; core-configurations.el ends here
