@@ -3,7 +3,9 @@ My personal emacs configuration files
 
 ## todo
 - write proper README, and create TODO file with tasks
-- add dashboard
+- dashboard:
+  - customize footnote to appear my quotes
+  - improve navigator button (reload configs)
 - add lsp
 - format files to include beginning and ending emacs standard text
 - improve auto-package-installer:
