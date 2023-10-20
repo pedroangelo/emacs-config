@@ -49,7 +49,7 @@
 
 ;; KEY BINDINGS
 
-;; unset key bind to suspend emacs 
+;; unset key bind to suspend emacs
 (when (display-graphic-p)
   (global-unset-key (kbd "C-z"))
   (global-unset-key (kbd "C-x C-z")))
