@@ -49,7 +49,30 @@
     (insert-file-contents file)
     (buffer-string)))
 
-(setq my-list-quotes (split-string (file-to-string "~/MEGA/Hobbies e Interesses/Quotes") "\n"))
+(defun string-reset-width (string)
+  "Remove all newline characters from string, effectively adjusting the width to size of string"
+  (replace-regexp-in-string "\n" "" string))
+
+(defun string-nth (n string)
+  "Obtain char at the nth position in the string"
+  (substring string n (+ n 1)))
+
+(defun string-adjust-width (string)
+  "Adjust string width to width by moving newlines"
+  (let ((clean-string (string-reset-width string)))
+    (if (< (length "asassas") (window-width))
+        clean-string
+      clean-string)))
+
+;; concat
+;; window-width
+;; (substring "ola" 0 1)
+;; (truncate-string-to-width "olla" 4)
+;; (substring "0123456789" 1 2)
+
+(setq my-list-quotes (mapcar 'string-adjust-width (split-string (file-to-string "~/MEGA/Hobbies e Interesses/Quotes") "\n")))
+
+;(setq my-list-quotes '("The man who makes everything that leads to happiness depends upon himself, and not upon other men, has adopted the very best plan for living happily.\nThis is the man of moderation\n, the man of manly character and of wisdom. - Plato"))
 
 (provide 'core-functions)
 ;;; core-functions.el ends here

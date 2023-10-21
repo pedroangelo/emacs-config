@@ -33,7 +33,6 @@
             nil "" ""))))
   (setq dashboard-footer-messages my-list-quotes)
   (setq dashboard-footer-icon (all-the-icons-faicon "quote-left"
-                                                    ;; asterisk book, bolt, 
                                                     :height 1.1
                                                     :v-adjust -0.05
                                                     :face 'font-lock-keyword-face))
