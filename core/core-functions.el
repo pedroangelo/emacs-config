@@ -49,5 +49,7 @@
     (insert-file-contents file)
     (buffer-string)))
 
+(setq my-list-quotes (split-string (file-to-string "~/MEGA/Hobbies e Interesses/Quotes") "\n"))
+
 (provide 'core-functions)
 ;;; core-functions.el ends here
