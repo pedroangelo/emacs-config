@@ -1,6 +1,3 @@
-(use-package rainbow-mode
-  :hook (emacs-lisp-mode text-mode lisp-mode))
-
 (use-package dashboard
   :ensure t
   :init

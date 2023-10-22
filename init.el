@@ -14,7 +14,7 @@
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(focus-autosave-mode markdown-preview-mode markdown-mode auto-theme-changer use-package solarized-theme haskell-mode)))
+   '(focus focus-autosave-mode markdown-preview-mode markdown-mode auto-theme-changer use-package solarized-theme haskell-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

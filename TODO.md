@@ -2,6 +2,7 @@
 List of tasks to improve my personal emacs configuration
 
 Tasks:
+- add focus package
 - write proper README
 - dashboard:
   - clip maximum footnote size to appear in the screen: smart clipping at whitespace; remove last newline entry
