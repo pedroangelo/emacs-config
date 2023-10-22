@@ -4,7 +4,7 @@ List of tasks to improve my personal emacs configuration
 Tasks:
 - write proper README
 - dashboard:
-  - clip maximum footnote size to appear in the screen
+  - clip maximum footnote size to appear in the screen: smart clipping at whitespace; remove last newline entry
   - improve navigator button (reload configs)
   - add option to reload last session
   - display key-bind tool-tip

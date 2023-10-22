@@ -57,22 +57,31 @@
   "Obtain char at the nth position in the string"
   (substring string n (+ n 1)))
 
-(defun string-adjust-width (string)
+;; (defun split-string-max-length (string max-length)
+;;   "Split a string into substrings with a max length of max-length"
+;;   (let ((new-string nil)
+;;         (rest-string string))
+;;     (let ((number-substrings (if (= 0 (mod (length string) max-length))
+;;                                  (/ (length string) max-length) 
+;;                                (+ 1 (/ (length string) max-length)))))
+;;       (progn
+;;         (dotimes (number number-substrings)
+;;           (progn
+;;             (setq new-string (concat new-string (seq-take rest-string max-length) "\n"))
+;;             (setq rest-string (seq-drop rest-string max-length))))
+;;         new-string))))
+
+(defun string-adjust-width (string width)
   "Adjust string width to width by moving newlines"
   (let ((clean-string (string-reset-width string)))
-    (if (< (length "asassas") (window-width))
+    (if (< (length string) width)
         clean-string
-      clean-string)))
+      (string-join (seq-partition clean-string width) "\n"))))
 
-;; concat
-;; window-width
-;; (substring "ola" 0 1)
-;; (truncate-string-to-width "olla" 4)
-;; (substring "0123456789" 1 2)
+(setq personal-quote-list (split-string (file-to-string "~/MEGA/Hobbies e Interesses/Quotes") "\n"))
 
-(setq my-list-quotes (mapcar 'string-adjust-width (split-string (file-to-string "~/MEGA/Hobbies e Interesses/Quotes") "\n")))
-
-;(setq my-list-quotes '("The man who makes everything that leads to happiness depends upon himself, and not upon other men, has adopted the very best plan for living happily.\nThis is the man of moderation\n, the man of manly character and of wisdom. - Plato"))
+(setq personal-quote-list-formatted (mapcar (lambda (quote) (string-adjust-width quote (truncate (* (window-width) 0.8))))
+                                            personal-quote-list))
 
 (provide 'core-functions)
 ;;; core-functions.el ends here

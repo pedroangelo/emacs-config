@@ -31,7 +31,7 @@
             "Reload Configs" "Reload configurations from dot files"
             (lambda (&rest _) (load-file (expand-file-name "init.el" user-emacs-directory)))
             nil "" ""))))
-  (setq dashboard-footer-messages my-list-quotes)
+  (setq dashboard-footer-messages personal-quote-list-formatted)
   (setq dashboard-footer-icon (all-the-icons-faicon "quote-left"
                                                     :height 1.1
                                                     :v-adjust -0.05
