@@ -39,5 +39,5 @@
   :config
   (dashboard-setup-startup-hook))
 
-(provide 'features-editor) 
-;;; features-editor.el ends here
+(provide 'features.editor) 
+;;; features.editor.el ends here

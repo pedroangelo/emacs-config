@@ -87,5 +87,5 @@
                                                                                  (truncate (* (window-width) 0.95))))
                                             personal-quote-list))
 
-(provide 'core-functions)
-;;; core-functions.el ends here
+(provide 'core.functions)
+;;; core.functions.el ends here

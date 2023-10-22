@@ -54,5 +54,5 @@
   (global-unset-key (kbd "C-z"))
   (global-unset-key (kbd "C-x C-z")))
 
-(provide 'core-configurations)
-;;; core-configurations.el ends here
+(provide 'core.configurations)
+;;; core.configurations.el ends here

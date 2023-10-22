@@ -11,5 +11,5 @@
                            ("18:30" . solarized-dark)))
   (circadian-setup))
 
-(provide 'features-themes) 
-;;; features-themes.el ends here
+(provide 'features.themes) 
+;;; features.themes.el ends here

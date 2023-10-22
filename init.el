@@ -14,7 +14,7 @@
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(markdown-preview-mode markdown-mode auto-theme-changer use-package solarized-theme haskell-mode)))
+   '(focus-autosave-mode markdown-preview-mode markdown-mode auto-theme-changer use-package solarized-theme haskell-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -28,6 +28,9 @@
 
 (add-to-list 'load-path (expand-file-name "features" user-emacs-directory))
 (require 'features)
+
+(add-to-list 'load-path (expand-file-name "editing" user-emacs-directory))
+(require 'editing)
 
 (add-to-list 'load-path (expand-file-name "languages" user-emacs-directory))
 (require 'languages)

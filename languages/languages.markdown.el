@@ -6,5 +6,5 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "pandoc"))
 
-(provide 'languages-markdown) 
-;;; languages-markdown.el ends here
+(provide 'languages.markdown) 
+;;; languages.markdown.el ends here

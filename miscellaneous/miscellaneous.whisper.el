@@ -1,3 +1,5 @@
+(add-to-list 'load-path (expand-file-name "packages/whisper" user-emacs-directory))
+
 (use-package whisper
   :load-path "~/.emacs.d/packages/whisper"
   :bind ("C-H-r" . whisper-run)
@@ -8,5 +10,5 @@
         whisper-translate nil
 				whisper-enable-speed-up nil))
 
-(provide 'miscellaneous-whisper) 
-;;; miscellaneous-whisper.el ends here
+(provide 'miscellaneous.whisper) 
+;;; miscellaneous.whisper.el ends here
