@@ -73,14 +73,18 @@
 
 (defun string-adjust-width (string width)
   "Adjust string width to width by moving newlines"
-  (let ((clean-string (string-reset-width string)))
-    (if (< (length string) width)
+  (let* ((clean-string (replace-regexp-in-string "\n" "" string))
+        (length-string (length clean-string))
+        (number-lines (ceiling (/ (float length-string) width)))
+        (partition-size (ceiling (/ (float length-string) number-lines))))
+    (if (< length-string width)
         clean-string
-      (string-join (seq-partition clean-string width) "\n"))))
+      (string-join (seq-partition clean-string partition-size) "\n"))))
 
 (setq personal-quote-list (split-string (file-to-string "~/MEGA/Hobbies e Interesses/Quotes") "\n"))
 
-(setq personal-quote-list-formatted (mapcar (lambda (quote) (string-adjust-width quote (truncate (* (window-width) 0.8))))
+(setq personal-quote-list-formatted (mapcar (lambda (quote) (string-adjust-width quote 
+                                                                                 (truncate (* (window-width) 0.95))))
                                             personal-quote-list))
 
 (provide 'core-functions)
