@@ -1,7 +1,6 @@
 (use-package solarized-theme)
 
 (use-package circadian
-  :ensure t
   :config
   (setq calendar-latitude 41.1)
   (setq calendar-longitude -8.7)

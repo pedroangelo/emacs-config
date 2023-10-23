@@ -3,11 +3,11 @@
   (add-to-list 'load-path (expand-file-name "packages/theme-rotation" user-emacs-directory))
   (require 'use-package))
 
-;; install missing packages
+;; automatically install packages not present already
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-;; update outdated packages
+;; automatically update outdated packages
 (use-package auto-package-update
   :config
   (setq auto-package-update-delete-old-versions t)
