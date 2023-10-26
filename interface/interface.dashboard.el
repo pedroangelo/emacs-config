@@ -35,19 +35,5 @@
   :config
   (dashboard-setup-startup-hook))
 
-(use-package zoom
-  :config
-  (zoom-mode t)
-  ;; resize windows according to the golden ratio
-  (custom-set-variables '(zoom-size '(0.618 . 0.618))))
-
-(use-package dimmer
-  :config
-  (dimmer-mode t)
-  ;; set dimmer to only apply to foreground
-  (setq dimmer-adjustment-mode :foreground)
-  ;; set dimmer to dim 35%
-  (setq dimmer-fraction 0.35))
-
-(provide 'features.editor) 
-;;; features.editor.el ends here
+(provide 'interface.dashboard)
+;;; interface.dashboard.el ends here

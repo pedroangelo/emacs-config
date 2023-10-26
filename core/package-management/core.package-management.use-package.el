@@ -1,6 +1,5 @@
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
-  (add-to-list 'load-path (expand-file-name "packages/theme-rotation" user-emacs-directory))
   (require 'use-package))
 
 ;; automatically install packages not present already
@@ -14,5 +13,5 @@
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
-(provide 'core.use-package) 
-;;; core-use-package.el ends here
+(provide 'core.package-management.use-package) 
+;;; core.package-management.use-package.el ends here

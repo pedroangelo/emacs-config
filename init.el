@@ -27,8 +27,8 @@
 (add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
 (require 'core)
 
-(add-to-list 'load-path (expand-file-name "features" user-emacs-directory))
-(require 'features)
+(add-to-list 'load-path (expand-file-name "interface" user-emacs-directory))
+(require 'interface)
 
 (add-to-list 'load-path (expand-file-name "editing" user-emacs-directory))
 (require 'editing)
