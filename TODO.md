@@ -2,12 +2,13 @@
 List of tasks to improve my personal emacs configuration
 
 Tasks:
+- check warnings:
+  - when installing helpful
 - install packages:
   - org mode
   - lsp
   - focus
   - siege-mode
-  - helpful
 - write proper README
 - dashboard:
   - clip maximum footnote size to appear in the screen: smart clipping at whitespace; remove last newline entry
