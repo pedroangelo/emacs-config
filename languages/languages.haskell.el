@@ -1,4 +1,4 @@
 (use-package haskell-mode)
 
-(provide 'languages.haskell) 
+(provide 'languages.haskell)
 ;;; languages.haskell.el ends here

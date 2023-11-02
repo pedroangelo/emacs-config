@@ -2,6 +2,8 @@
 List of tasks to improve my personal emacs configuration
 
 Tasks:
+- turn todo into org file
+- in latex mode, show whitespace as small dot
 - check warnings:
   - when installing helpful
 - install packages:
