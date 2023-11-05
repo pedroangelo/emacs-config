@@ -14,7 +14,7 @@
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(aggressive-indent solaire-mode helpful company rainbow-mode beacon focus focus-autosave-mode markdown-preview-mode markdown-mode auto-theme-changer use-package solarized-theme haskell-mode))
+   '(highlight-indent-guides aggressive-indent solaire-mode helpful company rainbow-mode beacon focus focus-autosave-mode markdown-preview-mode markdown-mode auto-theme-changer use-package solarized-theme haskell-mode))
  '(zoom-size '(0.618 . 0.618)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
