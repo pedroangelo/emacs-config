@@ -1,8 +1,11 @@
-# emacs-config TODO
+#+title: emacs-config TODO
+#+author: Pedro Ângelo
+#+date: 2023-09-07
+
 List of tasks to improve my personal emacs configuration
 
-Tasks:
-- turn todo into org file
+* TODO Tasks:
+- save all temporary files in a single folder, check package [[https://github.com/emacscollective/no-littering]]
 - in latex mode, show whitespace as small dot
 - check warnings:
   - when installing helpful
@@ -25,6 +28,6 @@ Tasks:
   - use :pin from use-package to choose which repository to install packages
 - save previous session so it's easier and faster to proceed work
 
-## Resources
-- https://unkertmedia.com/how-to-setup-emacs-for-web-development/
-- https://michaelneuper.com/posts/efficient-latex-editing-with-emacs/
+* Resources
+- [[https://unkertmedia.com/how-to-setup-emacs-for-web-development/]]
+- [[https://michaelneuper.com/posts/efficient-latex-editing-with-emacs/]]

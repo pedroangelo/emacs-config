@@ -1,0 +1,5 @@
+#+title: emacs-config
+#+author: Pedro Ângelo
+#+date: 2023-09-07
+
+My personal emacs configuration files
