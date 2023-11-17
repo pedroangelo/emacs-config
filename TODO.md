@@ -27,3 +27,4 @@ Tasks:
 
 ## Resources
 - https://unkertmedia.com/how-to-setup-emacs-for-web-development/
+- https://michaelneuper.com/posts/efficient-latex-editing-with-emacs/
