@@ -1,5 +1,8 @@
 ;; VARIABLES
 
+;; save backup files in a specific folder
+(setq backup-directory-alist `(("." . ,(expand-file-name "tmp/backups/" user-emacs-directory))))
+
 ;; ;; display thin cursor
 ;; (setq-default cursor-type 'bar)
 
