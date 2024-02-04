@@ -1,15 +1,3 @@
-#+title: emacs-config
-#+author: Pedro Ângelo
-#+date: 2023-09-07
-
-My personal emacs literate configuration
-
-* Core
-
-** Configurations
-
-#+begin_src emacs-lisp
-
 ;; VARIABLES
 
 ;; save backup files in a specific folder
@@ -69,13 +57,6 @@ My personal emacs literate configuration
   (global-unset-key (kbd "C-z"))
   (global-unset-key (kbd "C-x C-z")))
 
-#+end_src
-
-
-** Utilities
-
-#+begin_src emacs-lisp
-
 (defun file-to-string (file)
   "Read file contents and return as string"
   (with-temp-buffer
@@ -119,15 +100,6 @@ My personal emacs literate configuration
 (setq personal-quote-list-formatted (mapcar (lambda (quote) (string-adjust-width quote 
                                                                                  (truncate (* (window-width) 0.95))))
                                             personal-quote-list))
-
-#+end_src
-
-
-** Package Management
-
-*** Instalation
-
-#+begin_src emacs-lisp
 
 ;; AUTO PACKAGE INSTALLER
 ;; automatically install packages from package-list not yet installed
@@ -174,12 +146,6 @@ My personal emacs literate configuration
 ; install missing packages
 (install-missing-packages)
 
-#+end_src
-
-*** Use-package
-
-#+begin_src emacs-lisp
-
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (require 'use-package))
@@ -194,10 +160,7 @@ My personal emacs literate configuration
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
-#+end_src
-*** Libraries
 
-#+begin_src emacs-lisp
 (use-package dash
   :pin gnu)
 
@@ -206,14 +169,6 @@ My personal emacs literate configuration
 
 (use-package s)
 
-#+end_src
-
-
-* Interface
-
-** Dashboard
-
-#+begin_src emacs-lisp
 (use-package dashboard
   :init
   ;; Set the title
@@ -251,21 +206,13 @@ My personal emacs literate configuration
                                                     :face 'font-lock-keyword-face))
   :config
   (dashboard-setup-startup-hook))
-#+end_src
 
-** Windows and Frames
-
-#+begin_src emacs-lisp
 (use-package zoom
   :config
   (zoom-mode t)
   ;; resize windows according to the golden ratio
   (custom-set-variables '(zoom-size '(0.618 . 0.618))))
-#+end_src
 
-** Themes
-
-#+begin_src emacs-lisp
 (use-package solarized-theme)
 
 (use-package circadian
@@ -277,11 +224,7 @@ My personal emacs literate configuration
                            (:sunset . solarized-dark)
                            ("18:30" . solarized-dark)))
   (circadian-setup))
-#+end_src
 
-** Focus / Distractions
-
-#+begin_src emacs-lisp
 (use-package dimmer
   :config
   (dimmer-mode t)
@@ -289,11 +232,7 @@ My personal emacs literate configuration
   (setq dimmer-adjustment-mode :foreground)
   ;; set dimmer to dim 35%
   (setq dimmer-fraction 0.35))
-#+end_src
 
-** Help
-
-#+begin_src emacs-lisp
 (use-package helpful
   :config
   (global-set-key (kbd "C-h f") #'helpful-callable)
@@ -301,19 +240,10 @@ My personal emacs literate configuration
   (global-set-key (kbd "C-h k") #'helpful-key)
   (global-set-key (kbd "C-h x") #'helpful-command)
   (global-set-key (kbd "C-c C-d") #'helpful-at-point))
-#+end_src
 
-* Editing
-
-** Text Highlight
-
-#+begin_src emacs-lisp
 (use-package rainbow-mode
   :hook (emacs-lisp-mode text-mode lisp-mode))
-#+end_src
 
-** Indentation
-#+begin_src emacs-lisp
 (use-package aggressive-indent
   :config
   ;; (add-to-list 'aggressive-indent-excluded-modes 'emacs-lisp-mode)
@@ -323,67 +253,37 @@ My personal emacs literate configuration
   :config
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
   (setq highlight-indent-guides-method 'character))
-#+end_src
 
-** Auto Completion
-
-#+begin_src emacs-lisp
 (use-package company
   :pin gnu
   :config
   ;; (setq company-idle-delay nil)
   (setq company-dabbrev-downcase nil)  
   (add-hook 'after-init-hook 'global-company-mode))
-#+end_src
 
-** Text Folding
-
-#+begin_src emacs-lisp
 (use-package origami
   :requires (dash s)
   :config
   (global-origami-mode))
-#+end_src
 
-
-* Languages
-
-** Haskell
-#+begin_src emacs-lisp
 (use-package haskell-mode)
-#+end_src
 
-** Markdown
-#+begin_src emacs-lisp
 (use-package markdown-mode
   :mode (("README\\.md\\'" . gfm-mode)
          ("TODO\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "pandoc"))
-#+end_src
 
-** Latex
-
-#+begin_src emacs-lisp
 ;; show whitespaces as dots
 ;; (add-hook 'latex-mode-hook 'whitespace-mode)
-#+end_src
 
-
-* Miscellaneous
-
-** Org mode
-#+begin_src emacs-lisp
 ;; prevent truncating lines in org mode; similar to word-wrap
 (setq org-startup-truncated nil)
 
 ;; open files with unfolded headings
 (setq org-startup-folded nil)
-#+end_src
 
-** Whisper
-#+begin_src emacs-lisp
 (add-to-list 'load-path (expand-file-name "packages/whisper" user-emacs-directory))
 
 (use-package whisper
@@ -395,4 +295,3 @@ My personal emacs literate configuration
 				whisper-model "base" ;; model options: tiny, base, small, medium, large
         whisper-translate nil
 				whisper-enable-speed-up nil))
-#+end_src

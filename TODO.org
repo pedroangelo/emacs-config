@@ -5,6 +5,7 @@
 List of tasks to improve my personal emacs configuration
 
 * TODO Tasks:
+- https://github.com/yilkalargaw/org-auto-tangle
 - save all temporary files in a single folder, check package [[https://github.com/emacscollective/no-littering]]
 - in latex mode, show whitespace as small dot
 - check warnings:
