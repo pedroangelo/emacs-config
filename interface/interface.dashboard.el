@@ -12,6 +12,7 @@
   (use-package all-the-icons
     :if (display-graphic-p))
   ;; use all-the-icons package
+  ;; don't forget to M-x all-the-icons-install-fonts
   (setq dashboard-icon-type 'all-the-icons)
   ;; add icons to the widget headings and their items
   (setq dashboard-set-heading-icons t)
