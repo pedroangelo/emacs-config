@@ -33,6 +33,9 @@ My personal emacs literate configuration
 ;; wrap text at words (doesn't treat as having a newline at the end)
 (setq-default word-wrap t)
 
+;; place custom-set-variables and custom-set-faces into their own file
+(setq custom-file (concat user-emacs-directory "custom.el"))
+
 ;; MODES
 
 ;; ;; save previous emacs session
