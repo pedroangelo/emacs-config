@@ -7,8 +7,9 @@ My personal literate emacs configuration
 * Core
 
 ** Configurations
+Configurations of emacs behaviour.
 
-We first set global configuration variables:
+Set global configuration variables:
 #+begin_src emacs-lisp
 ;; save backup files in a specific folder, to avoid cluttering
 (setq backup-directory-alist `(("." . ,(expand-file-name "tmp/backups/" user-emacs-directory))))
@@ -22,7 +23,8 @@ We first set global configuration variables:
 ;; use spaces for indentation instead of tabs
 (setq-default indent-tabs-mode nil)
 
-;; kill the whole line (newline including), if at collumn zero; kill up to newline if not at column zero
+;; kill the whole line, including newline, if at collumn zero
+;; kill up to newline if not at collumn zero
 (setq kill-whole-line t)
 
 ;; default tab width set to 2 spaces
@@ -35,7 +37,7 @@ We first set global configuration variables:
 (setq custom-file (concat user-emacs-directory "custom.el"))
 #+end_src
 
-Then, we enable (and disable) modes:
+Enable / disable modes:
 #+begin_src emacs-lisp
 ;; ;; save previous emacs session
 ;; (desktop-save-mode 1)
@@ -65,7 +67,7 @@ Then, we enable (and disable) modes:
 (tool-bar-mode -1)
 #+end_src
 
-Finally, we customize key bindings:
+Customize key bindings:
 #+begin_src emacs-lisp
 ;; unset key bind to suspend emacs
 (when (display-graphic-p)
@@ -74,9 +76,8 @@ Finally, we customize key bindings:
 #+end_src
 
 ** Utilities
-
+Custom functions:
 #+begin_src emacs-lisp
-
 (defun file-to-string (file)
   "Read file contents and return as string"
   (with-temp-buffer
@@ -120,17 +121,12 @@ Finally, we customize key bindings:
 (setq personal-quote-list-formatted (mapcar (lambda (quote) (string-adjust-width quote 
                                                                                  (truncate (* (window-width) 0.95))))
                                             personal-quote-list))
-
 #+end_src
 
-
 ** Package Management
-
 *** Instalation
-
+Custom function to install use-package, from which other packages can be installed:
 #+begin_src emacs-lisp
-
-;; AUTO PACKAGE INSTALLER
 ;; automatically install packages from package-list not yet installed
 
 ;; set list of packages to install
@@ -174,13 +170,11 @@ Finally, we customize key bindings:
 
 ; install missing packages
 (install-missing-packages)
-
 #+end_src
 
 *** Use-package
-
+Configurations for use-package:
 #+begin_src emacs-lisp
-
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (require 'use-package))
@@ -196,8 +190,9 @@ Finally, we customize key bindings:
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 #+end_src
-*** Libraries
 
+*** Libraries
+Install library packages:
 #+begin_src emacs-lisp
 (use-package dash
   :pin gnu)
@@ -206,27 +201,27 @@ Finally, we customize key bindings:
   :pin gnu)
 
 (use-package s)
-
 #+end_src
-
 
 * Interface
 
 ** Dashboard
+Configurations for the splash screen.
 
+Configurations for the dashboard package, which replaces the splash screen with a configurable dashboard:
 #+begin_src emacs-lisp
 (use-package dashboard
   :init
-  ;; Set the title
+  ;; set the title
   (setq dashboard-banner-logo-title "Emacs Dashboard")
-  ;; Set the banner
+  ;; set the banner
   (setq dashboard-startup-banner 'logo)
-  ;; Center content
+  ;; center content
   (setq dashboard-center-content t)
   ;; set dashboard items
   (setq dashboard-items '((bookmarks . 5)
                           (recents  . 5)))
-  (use-package all-the-icons
+  (use-package all-the-icons 
     :if (display-graphic-p))
   ;; use all-the-icons package
   ;; don't forget to M-x all-the-icons-install-fonts
@@ -255,7 +250,9 @@ Finally, we customize key bindings:
 #+end_src
 
 ** Windows and Frames
+Configurations for windows and frames.
 
+Configurations for the zoom package, which automatically resizes windows according to a given ration, giving greater focus on the currently focused window:
 #+begin_src emacs-lisp
 (use-package zoom
   :config
@@ -265,10 +262,15 @@ Finally, we customize key bindings:
 #+end_src
 
 ** Themes
+Configurations for themes.
 
+Install solarized theme:
 #+begin_src emacs-lisp
 (use-package solarized-theme)
+#+end_src
 
+Configurations for the circadian package, which enables automatic theme switching according to time of day:
+#+begin_src emacs-lisp
 (use-package circadian
   :config
   (setq calendar-latitude 41.1)
@@ -281,7 +283,9 @@ Finally, we customize key bindings:
 #+end_src
 
 ** Focus / Distractions
+Configurations for capabilities to enhance focus and avoid distractions.
 
+Configurations for the dimmer package, which automatically dims all but the currently focused window:
 #+begin_src emacs-lisp
 (use-package dimmer
   :config
@@ -293,7 +297,9 @@ Finally, we customize key bindings:
 #+end_src
 
 ** Help
+Configurations for help capabilities.
 
+Configurations for the helpful package, which enhances standard help functions:
 #+begin_src emacs-lisp
 (use-package helpful
   :config
@@ -307,19 +313,27 @@ Finally, we customize key bindings:
 * Editing
 
 ** Text Highlight
+Configurations for text highlighting capabilities.
 
+Configurations for the rainbow-mode package, which sets the background color of strings to match the string's color name:
 #+begin_src emacs-lisp
 (use-package rainbow-mode
   :hook (emacs-lisp-mode text-mode lisp-mode))
 #+end_src
 
 ** Indentation
+Configurations for indenting capabilities.
+
+Configurations for the aggressive-indent package, which automatically inserts indentation according to the language and scope:
 #+begin_src emacs-lisp
 (use-package aggressive-indent
   :config
   ;; (add-to-list 'aggressive-indent-excluded-modes 'emacs-lisp-mode)
   (global-aggressive-indent-mode 1))
+#+end_src
 
+Configurations for the highlight-indent-guides package, which shown indentation guides:
+#+begin_src emacs-lisp
 (use-package highlight-indent-guides
   :config
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
@@ -327,7 +341,9 @@ Finally, we customize key bindings:
 #+end_src
 
 ** Auto Completion
+Configurations for auto completion capabilities.
 
+Configurations for the company package, which provides autocompletion tooltips:
 #+begin_src emacs-lisp
 (use-package company
   :pin gnu
@@ -338,7 +354,9 @@ Finally, we customize key bindings:
 #+end_src
 
 ** Text Folding
+Configurations for text folding capabilities.
 
+Configurations for the origamy package, which allows code blocks to be folded:
 #+begin_src emacs-lisp
 (use-package origami
   :requires (dash s)
@@ -346,15 +364,20 @@ Finally, we customize key bindings:
   (global-origami-mode))
 #+end_src
 
-
 * Languages
 
 ** Haskell
+Configurations for the haskell language.
+
+Configurations for the haskell-mode package, which provides haskell keyword highlighting:
 #+begin_src emacs-lisp
 (use-package haskell-mode)
 #+end_src
 
 ** Markdown
+Configurations for the markdown language.
+
+Configurations for the markdown-mode package, which provides markdown keyword highlighting:
 #+begin_src emacs-lisp
 (use-package markdown-mode
   :mode (("README\\.md\\'" . gfm-mode)
@@ -365,16 +388,17 @@ Finally, we customize key bindings:
 #+end_src
 
 ** Latex
+Configurations for LaTeX editing.
 
 #+begin_src emacs-lisp
 ;; show whitespaces as dots
 ;; (add-hook 'latex-mode-hook 'whitespace-mode)
 #+end_src
 
-
 * Miscellaneous
 
 ** Org mode
+Configurations for org-mode:
 #+begin_src emacs-lisp
 ;; prevent truncating lines in org mode; similar to word-wrap
 (setq org-startup-truncated nil)
@@ -384,6 +408,8 @@ Finally, we customize key bindings:
 #+end_src
 
 ** Whisper
+Configurations for the whisper speech-to-text engine:
+
 #+begin_src emacs-lisp
 (add-to-list 'load-path (expand-file-name "packages/whisper" user-emacs-directory))
 
