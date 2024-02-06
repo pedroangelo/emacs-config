@@ -8,27 +8,20 @@ My personal literate emacs configuration
 
 ** Configurations
 
-We first set global configuration variables.
-
-Save backup files in a specific folder:
+We first set global configuration variables:
 #+begin_src emacs-lisp
+;; save backup files in a specific folder, to avoid cluttering
 (setq backup-directory-alist `(("." . ,(expand-file-name "tmp/backups/" user-emacs-directory))))
-#+end_src
 
-#+begin_src emacs-lisp
 ;; ;; display thin cursor
 ;; (setq-default cursor-type 'bar)
 
 ;; ;; display line numbers relative to current cursor line
 ;; (setq display-line-numbers-type 'relative)
-#+end_src
 
-Use spaces for indentation instead of tabs:
-#+begin_src emacs-lisp
+;; use spaces for indentation instead of tabs
 (setq-default indent-tabs-mode nil)
-#+end_src
 
-#+begin_src emacs-lisp
 ;; kill the whole line (newline including), if at collumn zero; kill up to newline if not at column zero
 (setq kill-whole-line t)
 
@@ -40,9 +33,10 @@ Use spaces for indentation instead of tabs:
 
 ;; place custom-set-variables and custom-set-faces into their own file
 (setq custom-file (concat user-emacs-directory "custom.el"))
+#+end_src
 
-;; MODES
-
+Then, we enable (and disable) modes:
+#+begin_src emacs-lisp
 ;; ;; save previous emacs session
 ;; (desktop-save-mode 1)
 
@@ -69,16 +63,15 @@ Use spaces for indentation instead of tabs:
 
 ;; do not display tool bar
 (tool-bar-mode -1)
+#+end_src
 
-;; KEY BINDINGS
-
+Finally, we customize key bindings:
+#+begin_src emacs-lisp
 ;; unset key bind to suspend emacs
 (when (display-graphic-p)
   (global-unset-key (kbd "C-z"))
   (global-unset-key (kbd "C-x C-z")))
-
 #+end_src
-
 
 ** Utilities
 
