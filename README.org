@@ -2,28 +2,33 @@
 #+author: Pedro Ângelo
 #+date: 2023-09-07
 
-My personal emacs literate configuration
+My personal literate emacs configuration
 
 * Core
 
 ** Configurations
 
+We first set global configuration variables.
+
+Save backup files in a specific folder:
 #+begin_src emacs-lisp
-
-;; VARIABLES
-
-;; save backup files in a specific folder
 (setq backup-directory-alist `(("." . ,(expand-file-name "tmp/backups/" user-emacs-directory))))
+#+end_src
 
+#+begin_src emacs-lisp
 ;; ;; display thin cursor
 ;; (setq-default cursor-type 'bar)
 
 ;; ;; display line numbers relative to current cursor line
 ;; (setq display-line-numbers-type 'relative)
+#+end_src
 
-;; use spaces for indentation instead of tabs
+Use spaces for indentation instead of tabs:
+#+begin_src emacs-lisp
 (setq-default indent-tabs-mode nil)
+#+end_src
 
+#+begin_src emacs-lisp
 ;; kill the whole line (newline including), if at collumn zero; kill up to newline if not at column zero
 (setq kill-whole-line t)
 
