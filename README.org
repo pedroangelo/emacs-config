@@ -7,8 +7,6 @@ My personal literate emacs configuration
 * Core
 
 ** Configurations
-Configurations of emacs behaviour.
-
 Set global configuration variables:
 #+begin_src emacs-lisp
 ;; save backup files in a specific folder, to avoid cluttering
@@ -172,8 +170,7 @@ Custom function to install use-package, from which other packages can be install
 (install-missing-packages)
 #+end_src
 
-*** Use-package
-Configurations for use-package:
+*** use-package
 #+begin_src emacs-lisp
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
@@ -192,7 +189,6 @@ Configurations for use-package:
 #+end_src
 
 *** Libraries
-Install library packages:
 #+begin_src emacs-lisp
 (use-package dash
   :pin gnu)
@@ -205,9 +201,7 @@ Install library packages:
 
 * Interface
 
-** Dashboard
-Configurations for the splash screen.
-
+** Splash Screen
 Configurations for the dashboard package, which replaces the splash screen with a configurable dashboard:
 #+begin_src emacs-lisp
 (use-package dashboard
@@ -250,8 +244,6 @@ Configurations for the dashboard package, which replaces the splash screen with 
 #+end_src
 
 ** Windows and Frames
-Configurations for windows and frames.
-
 Configurations for the zoom package, which automatically resizes windows according to a given ration, giving greater focus on the currently focused window:
 #+begin_src emacs-lisp
 (use-package zoom
@@ -262,8 +254,6 @@ Configurations for the zoom package, which automatically resizes windows accordi
 #+end_src
 
 ** Themes
-Configurations for themes.
-
 Install solarized theme:
 #+begin_src emacs-lisp
 (use-package solarized-theme)
@@ -282,9 +272,7 @@ Configurations for the circadian package, which enables automatic theme switchin
   (circadian-setup))
 #+end_src
 
-** Focus / Distractions
-Configurations for capabilities to enhance focus and avoid distractions.
-
+** Focus Enhancing  and Distraction Avoiding
 Configurations for the dimmer package, which automatically dims all but the currently focused window:
 #+begin_src emacs-lisp
 (use-package dimmer
@@ -297,8 +285,6 @@ Configurations for the dimmer package, which automatically dims all but the curr
 #+end_src
 
 ** Help
-Configurations for help capabilities.
-
 Configurations for the helpful package, which enhances standard help functions:
 #+begin_src emacs-lisp
 (use-package helpful
@@ -313,8 +299,6 @@ Configurations for the helpful package, which enhances standard help functions:
 * Editing
 
 ** Text Highlight
-Configurations for text highlighting capabilities.
-
 Configurations for the rainbow-mode package, which sets the background color of strings to match the string's color name:
 #+begin_src emacs-lisp
 (use-package rainbow-mode
@@ -322,8 +306,6 @@ Configurations for the rainbow-mode package, which sets the background color of 
 #+end_src
 
 ** Indentation
-Configurations for indenting capabilities.
-
 Configurations for the aggressive-indent package, which automatically inserts indentation according to the language and scope:
 #+begin_src emacs-lisp
 (use-package aggressive-indent
@@ -341,8 +323,6 @@ Configurations for the highlight-indent-guides package, which shown indentation 
 #+end_src
 
 ** Auto Completion
-Configurations for auto completion capabilities.
-
 Configurations for the company package, which provides autocompletion tooltips:
 #+begin_src emacs-lisp
 (use-package company
@@ -354,8 +334,6 @@ Configurations for the company package, which provides autocompletion tooltips:
 #+end_src
 
 ** Text Folding
-Configurations for text folding capabilities.
-
 Configurations for the origamy package, which allows code blocks to be folded:
 #+begin_src emacs-lisp
 (use-package origami
@@ -367,16 +345,12 @@ Configurations for the origamy package, which allows code blocks to be folded:
 * Languages
 
 ** Haskell
-Configurations for the haskell language.
-
 Configurations for the haskell-mode package, which provides haskell keyword highlighting:
 #+begin_src emacs-lisp
 (use-package haskell-mode)
 #+end_src
 
 ** Markdown
-Configurations for the markdown language.
-
 Configurations for the markdown-mode package, which provides markdown keyword highlighting:
 #+begin_src emacs-lisp
 (use-package markdown-mode
@@ -388,8 +362,6 @@ Configurations for the markdown-mode package, which provides markdown keyword hi
 #+end_src
 
 ** Latex
-Configurations for LaTeX editing.
-
 #+begin_src emacs-lisp
 ;; show whitespaces as dots
 ;; (add-hook 'latex-mode-hook 'whitespace-mode)
@@ -397,8 +369,7 @@ Configurations for LaTeX editing.
 
 * Miscellaneous
 
-** Org mode
-Configurations for org-mode:
+** Org-mode
 #+begin_src emacs-lisp
 ;; prevent truncating lines in org mode; similar to word-wrap
 (setq org-startup-truncated nil)
@@ -409,7 +380,6 @@ Configurations for org-mode:
 
 ** Whisper
 Configurations for the whisper speech-to-text engine:
-
 #+begin_src emacs-lisp
 (add-to-list 'load-path (expand-file-name "packages/whisper" user-emacs-directory))
 
