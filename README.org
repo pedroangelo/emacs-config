@@ -12,6 +12,10 @@ Set global configuration variables:
 ;; save backup files in a specific folder, to avoid cluttering
 (setq backup-directory-alist `(("." . ,(expand-file-name "tmp/backups/" user-emacs-directory))))
 
+;; display both current line and collumn numbers for pointer
+(setq column-number-mode t)
+(setq line-number-mode t)
+
 ;; ;; display thin cursor
 ;; (setq-default cursor-type 'bar)
 
@@ -20,6 +24,9 @@ Set global configuration variables:
 
 ;; use spaces for indentation instead of tabs
 (setq-default indent-tabs-mode nil)
+
+;; ;; Do not show the startup screen.
+;; (setq inhibit-startup-message t)
 
 ;; kill the whole line, including newline, if at collumn zero
 ;; kill up to newline if not at collumn zero
@@ -33,6 +40,8 @@ Set global configuration variables:
 
 ;; place custom-set-variables and custom-set-faces into their own file
 (setq custom-file (concat user-emacs-directory "custom.el"))
+(when (file-exists-p custom-file)
+(load custom-file))
 #+end_src
 
 Enable / disable modes:
@@ -49,20 +58,22 @@ Enable / disable modes:
 ;; display line numbers
 (global-display-line-numbers-mode t)
 
+;; highlight current line
+(global-hl-line-mode t)
+
 ;; ;; wrap text at words (treats as having a newline at the end)
 ;; (global-visual-line-mode t)
 
-;; do not display menu bar
+;; do not display menu bar, tool bar and scroll bar
 (menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; remember and restore the last cursor location of opened files
 (save-place-mode 1)
 
 ;; display matching parenthesis
 (show-paren-mode 1)
-
-;; do not display tool bar
-(tool-bar-mode -1)
 #+end_src
 
 Customize key bindings:
@@ -123,6 +134,16 @@ Custom functions:
 
 ** Package Management
 *** Instalation
+Setting up package and archives
+#+begin_src emacs-lisp
+(require 'package)
+(package-initialize)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("gnu" . "https://elpa.gnu.org/packages/") t)
+#+end_src
+
 Custom function to install use-package, from which other packages can be installed:
 #+begin_src emacs-lisp
 ;; automatically install packages from package-list not yet installed
