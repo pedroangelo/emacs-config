@@ -106,7 +106,7 @@ Custom functions:
 ;;   (let ((new-string nil)
 ;;         (rest-string string))
 ;;     (let ((number-substrings (if (= 0 (mod (length string) max-length))
-;;                                  (/ (length string) max-length) 
+;;                                  (/ (length string) max-length)
 ;;                                (+ 1 (/ (length string) max-length)))))
 ;;       (progn
 ;;         (dotimes (number number-substrings)
@@ -127,7 +127,7 @@ Custom functions:
 
 (setq personal-quote-list (split-string (file-to-string "~/MEGA/Hobbies e Interesses/Quotes") "\n"))
 
-(setq personal-quote-list-formatted (mapcar (lambda (quote) (string-adjust-width quote 
+(setq personal-quote-list-formatted (mapcar (lambda (quote) (string-adjust-width quote
                                                                                  (truncate (* (window-width) 0.95))))
                                             personal-quote-list))
 #+end_src
@@ -160,7 +160,7 @@ Custom function to install use-package, from which other packages can be install
 	"Tests for internet connection by calling ping, sending one packet to either argument or 8.8.8.8."
 	;; call-process program &optional infile destination display &rest args
 	;; ping args: -c 1, stop after sending 1 packet; -W 1, timeout after 1 second
-  (= 0 (call-process "ping" nil nil nil "-c" "1" "-W" "1" 
+  (= 0 (call-process "ping" nil nil nil "-c" "1" "-W" "1"
 										 (if host host "8.8.8.8"))))
 
 ;; set variable has-internet-connection as: t (if there is internet connection) or nil (if there is not)
@@ -236,7 +236,7 @@ Configurations for the dashboard package, which replaces the splash screen with 
   ;; set dashboard items
   (setq dashboard-items '((bookmarks . 5)
                           (recents  . 5)))
-  (use-package all-the-icons 
+  (use-package all-the-icons
     :if (display-graphic-p))
   ;; use all-the-icons package
   ;; don't forget to M-x all-the-icons-install-fonts
@@ -350,12 +350,12 @@ Configurations for the company package, which provides autocompletion tooltips:
   :pin gnu
   :config
   ;; (setq company-idle-delay nil)
-  (setq company-dabbrev-downcase nil)  
+  (setq company-dabbrev-downcase nil)
   (add-hook 'after-init-hook 'global-company-mode))
 #+end_src
 
 ** Text Folding
-Configurations for the origamy package, which allows code blocks to be folded:
+Configurations for the origami package, which allows code blocks to be folded:
 #+begin_src emacs-lisp
 (use-package origami
   :requires (dash s)
