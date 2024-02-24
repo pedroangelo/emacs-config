@@ -3,10 +3,17 @@
 #+date: 2023-09-07
 
 My personal literate emacs configuration
-
 * Core
 
 ** Configurations
+Emacs loves to clutter the filesystem with backups, leaving ~ files everywhere.
+I prefer to keep them neatly stored in a single location.
+#+begin_src emacs-lisp
+;; save backup files in a specific folder, to avoid cluttering
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name "tmp/backups/" user-emacs-directory))))
+#+end_src
+
 Set global configuration variables:
 #+begin_src emacs-lisp
 ;; save backup files in a specific folder, to avoid cluttering
