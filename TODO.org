@@ -5,8 +5,10 @@
 List of tasks to improve my personal emacs configuration
 
 * TODO Tasks:
+- On README.org, "some useful commands that I don't use but like to keep commented, so I don't forget"
 - https://github.com/yilkalargaw/org-auto-tangle
 - save all temporary files in a single folder, check package [[https://github.com/emacscollective/no-littering]]
+  - https://emacs.stackexchange.com/questions/33/put-all-backups-into-one-backup-folder
 - in latex mode, show whitespace as small dot
 - check warnings:
   - when installing helpful
