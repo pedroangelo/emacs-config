@@ -1,7 +1,6 @@
 #+title: emacs-config
 #+author: Pedro Ângelo
 #+date: 2023-09-07
-#+OPTIONS: toc:2
 
 My personal literate emacs configuration
 * Core
