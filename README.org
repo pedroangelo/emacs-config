@@ -3,6 +3,7 @@
 #+date: 2023-09-07
 
 My personal literate emacs configuration
+
 * Core
 
 ** Configurations
@@ -296,6 +297,23 @@ Configurations for the helpful package, which enhances standard help functions:
 #+end_src
 
 * Editing
+
+** Spell Checking
+Configurations for the flyspell package, which provides on-the-fly spell checking.
+#+begin_src emacs-lisp
+  ;; (require 'flyspell)
+  ;; ;; disable message printing for every word to avoid slowdown
+  ;; (setq flyspell-issue-message-flag nil)
+  ;; (setq ispell-aspell-data-dir "/usr/lib/aspell/")
+  ;; (setq ispell-aspell-dict-dir ispell-aspell-data-dir)
+  ;; ;; (setq ispell-local-dictionary "en_GB")
+  ;; (setq ispell-program-name "aspell")
+  ;; ;; (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_GB"))
+
+  ;; (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  ;; (add-hook 'text-mode-hook 'flyspell-mode)
+  ;; (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+#+end_src
 
 ** Text Highlight
 Configurations for the rainbow-mode package, which sets the background color of strings to match the string's color name:
