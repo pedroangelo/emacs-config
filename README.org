@@ -14,14 +14,21 @@ I prefer to keep my filesystem more tidy, hence I neatly store backups in a sing
   ;; (setq backup-by-copying t)
   (setq make-backup-files t)
   ;; save backup files in a specific folder, to avoid cluttering
-  (setq backup-directory-alist 
-        `(("." . ,(expand-file-name "tmp/backups/" user-emacs-directory))))
+  ;; the directory is created automatically
+  (setq backup-directory-alist
+        `((".*" . ,(expand-file-name "emacs-backups/" temporary-file-directory))))
 
   ;; allow autosaves
   (setq auto-save-default t)
+  ;; specify the regularity of autosaves
+  ;; (setq auto-save-interval 20)
+  ;; unless autosaves directory exists, create it
+  (unless (file-exists-p (expand-file-name "emacs-autosaves/" temporary-file-directory))
+    (make-directory (expand-file-name "emacs-autosaves/" temporary-file-directory)))
   ;; save autosave files in a specific folder, to avoid cluttering
-  ;; (setq auto-save-file-name-transforms
-  ;;       `((".*" ,(expand-file-name "tmp/autosaves/" user-emacs-directory) t)))
+  (setq auto-save-file-name-transforms
+        ;; `((".*" ,temporary-file-directory t)))
+        `((".*" ,(expand-file-name "emacs-autosaves/" temporary-file-directory) t)))
 
   ;; disallow lockfiles
   (setq create-lockfiles nil)
