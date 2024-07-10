@@ -316,10 +316,11 @@ Configurations for the helpful package, which enhances standard help functions:
 * Editing
 
 ** Spell Checking
-Configurations for the flyspell package, which provides on-the-fly spell checking.
-
-This package didn't work out of the box, due to Flatpak's containment environment.
+For spell checking, I use flyspell and aspell.
+However, flyspell didn't work out of the box, due to Flatpak's containment environment.
 I installed Emacs via Snap instead and it worked.
+
+Configurations for the flyspell package, which provides on-the-fly spell checking.
 #+begin_src emacs-lisp
   (require 'flyspell)
 
