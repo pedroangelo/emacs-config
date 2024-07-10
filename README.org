@@ -56,6 +56,9 @@ Set global configuration variables:
 ;; kill up to newline if not at collumn zero
 (setq kill-whole-line t)
 
+;; Save existing clipboard text into the kill ring before replacing it.
+(setq save-interprogram-paste-before-kill t)
+
 ;; default tab width set to 2 spaces
 (setq-default tab-width 2)
 
@@ -100,7 +103,7 @@ Enable / disable modes:
 (show-paren-mode 1)
 #+end_src
 
-Customize key bindings:
+Customise key bindings:
 #+begin_src emacs-lisp
 ;; unset key bind to suspend emacs
 (when (display-graphic-p)
