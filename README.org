@@ -345,8 +345,33 @@ I installed Emacs via Snap instead and it worked.
   (add-hook 'flyspell-mode-hook #'flyspell-buffer)
 #+end_src
 
+Now that spell checking is configured, let's allow for spell checking of several languages at the same time.
+For this, I'm using the guess-language package.
+
+Configuration for the guess-language package, which automatically detects the language being typed and switches spell checker.
+#+begin_src emacs-lisp
+  (use-package guess-language
+    :ensure t
+    :init
+    ;; guess language in all mode
+    (add-hook 'LaTeX-mode-hook #'guess-language-mode)
+    (add-hook 'text-mode-hook #'guess-language-mode)
+    (add-hook 'prog-mode-hook #'guess-language-mode)
+    :config
+    ;; guess languages between portuguese and british
+    (setq guess-language-languages '(en pt))
+    (setq guess-language-langcodes
+          '((en . ("en_GB" "british"))
+            (pt . ("pt_PT" "portuguese"))))
+    ;; set the minimal length a paragraph needs to have before guess-language-mode changes to its language
+    (setq guess-language-min-paragraph-length 35))
+#+end_src
+
+Note that guess-language inspects a paragraph in order to detect language.
+Hence, the texts in different languages must have at least a empty line between them.
+
 ** Text Highlight
-Configurations for the rainbow-mode package, which sets the background color of strings to match the string's color name.
+Configurations for the rainbow-mode package, which sets the background colour of strings to match the string's colour name.
 #+begin_src emacs-lisp
 (use-package rainbow-mode
   :hook (emacs-lisp-mode text-mode lisp-mode))
