@@ -316,11 +316,11 @@ Configurations for the helpful package, which enhances standard help functions:
 * Editing
 
 ** Spell Checking
-For spell checking, I use flyspell and aspell.
-However, flyspell didn't work out of the box, due to Flatpak's containment environment.
+For spell checking, I use ~flyspell~ and ~aspell~.
+However, ~flyspell~ didn't work out of the box, due to Flatpak's containment environment.
 I installed Emacs via Snap instead and it worked.
 
-Configurations for the flyspell package, which provides on-the-fly spell checking.
+Configurations for the ~flyspell~ package, which provides on-the-fly spell checking.
 #+begin_src emacs-lisp
   (require 'flyspell)
 
@@ -347,9 +347,9 @@ Configurations for the flyspell package, which provides on-the-fly spell checkin
 #+end_src
 
 Now that spell checking is configured, let's allow for spell checking of several languages at the same time.
-For this, I'm using the guess-language package.
+For this, I'm using the ~guess-language~ package.
 
-Configuration for the guess-language package, which automatically detects the language being typed and switches spell checker.
+Configuration for the ~guess-language~ package, which automatically detects the language being typed and switches spell checker.
 #+begin_src emacs-lisp
   (use-package guess-language
     :ensure t
@@ -368,7 +368,7 @@ Configuration for the guess-language package, which automatically detects the la
     (setq guess-language-min-paragraph-length 35))
 #+end_src
 
-Note that guess-language inspects a paragraph in order to detect language.
+Note that ~guess-language~ inspects a paragraph in order to detect language.
 Hence, the texts in different languages must have at least a empty line between them.
 
 ** Text Highlight
