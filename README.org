@@ -7,10 +7,11 @@ My personal literate emacs configuration
 * Core
 
 ** Configurations
-Emacs loves to clutter the filesystem with extra files, leaving backups, autosaves and lockfiles everywhere.
-I prefer to keep my filesystem more tidy, hence I neatly store backups in a single location while disallowing autosaves and lockfiles.
+The standard Emacs configuration clutter the filesystem with extra files, leaving backups, autosaves and lockfiles everywhere.
+I prefer to keep my filesystem more tidy, hence I neatly store backups and autosaves in a single location.
+I disable lockfiles, since there's only one user at a time.
 #+begin_src emacs-lisp
-  ;; allow backups
+  ;; enable automatic backups
   ;; (setq backup-by-copying t)
   (setq make-backup-files t)
   ;; save backup files in a specific folder, to avoid cluttering
@@ -18,7 +19,7 @@ I prefer to keep my filesystem more tidy, hence I neatly store backups in a sing
   (setq backup-directory-alist
         `((".*" . ,(expand-file-name "emacs-backups/" temporary-file-directory))))
 
-  ;; allow autosaves
+  ;; enable automatic autosaves
   (setq auto-save-default t)
   ;; specify the regularity of autosaves
   ;; (setq auto-save-interval 20)
@@ -30,7 +31,7 @@ I prefer to keep my filesystem more tidy, hence I neatly store backups in a sing
         ;; `((".*" ,temporary-file-directory t)))
         `((".*" ,(expand-file-name "emacs-autosaves/" temporary-file-directory) t)))
 
-  ;; disallow lockfiles
+  ;; do not lock files
   (setq create-lockfiles nil)
 #+end_src
 
