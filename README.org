@@ -179,7 +179,7 @@ Setting up package and archives
              '("gnu" . "https://elpa.gnu.org/packages/") t)
 #+end_src
 
-From the package use-package, other packages can be installed.
+From the package ~use-package~, other packages can be installed.
 Hence, ensure it is either already installed, or install it:
 #+begin_src emacs-lisp
 (unless (package-installed-p 'use-package)
@@ -219,7 +219,7 @@ Hence, ensure it is either already installed, or install it:
 * Interface
 
 ** Splash Screen
-Configurations for the dashboard package, which replaces the splash screen with a configurable dashboard:
+Configurations for the ~dashboard~ package, which replaces the splash screen with a configurable dashboard:
 #+begin_src emacs-lisp
 (use-package dashboard
   :init
@@ -261,7 +261,7 @@ Configurations for the dashboard package, which replaces the splash screen with 
 #+end_src
 
 ** Windows and Frames
-Configurations for the zoom package, which automatically resizes windows according to a given ration, giving greater focus on the currently focused window:
+Configurations for the ~zoom~ package, which automatically resizes windows according to a given ration, giving greater focus on the currently focused window:
 #+begin_src emacs-lisp
 (use-package zoom
   :config
@@ -276,7 +276,7 @@ Install solarized theme:
 (use-package solarized-theme)
 #+end_src
 
-Configurations for the circadian package, which enables automatic theme switching according to time of day:
+Configurations for the ~circadian~ package, which enables automatic theme switching according to time of day:
 #+begin_src emacs-lisp
 (use-package circadian
   :config
@@ -290,7 +290,7 @@ Configurations for the circadian package, which enables automatic theme switchin
 #+end_src
 
 ** Focus Enhancing  and Distraction Avoiding
-Configurations for the dimmer package, which automatically dims all but the currently focused window:
+Configurations for the ~dimmer~ package, which automatically dims all but the currently focused window:
 #+begin_src emacs-lisp
 (use-package dimmer
   :config
@@ -302,7 +302,7 @@ Configurations for the dimmer package, which automatically dims all but the curr
 #+end_src
 
 ** Help
-Configurations for the helpful package, which enhances standard help functions:
+Configurations for the ~helpful~ package, which enhances standard help functions:
 #+begin_src emacs-lisp
 (use-package helpful
   :config
@@ -372,14 +372,14 @@ Note that ~guess-language~ inspects a paragraph in order to detect language.
 Hence, the texts in different languages must have at least a empty line between them.
 
 ** Text Highlight
-Configurations for the rainbow-mode package, which sets the background colour of strings to match the string's colour name.
+Configurations for the ~rainbow-mode~ package, which sets the background colour of strings to match the string's colour name.
 #+begin_src emacs-lisp
 (use-package rainbow-mode
   :hook (emacs-lisp-mode text-mode lisp-mode))
 #+end_src
 
 ** Indentation
-Configurations for the aggressive-indent package, which automatically inserts indentation according to the language and scope:
+Configurations for the ~aggressive-indent~ package, which automatically inserts indentation according to the language and scope:
 #+begin_src emacs-lisp
 (use-package aggressive-indent
   :config
@@ -387,7 +387,7 @@ Configurations for the aggressive-indent package, which automatically inserts in
   (global-aggressive-indent-mode 1))
 #+end_src
 
-Configurations for the highlight-indent-guides package, which shown indentation guides:
+Configurations for the ~highlight-indent-guides~ package, which shown indentation guides:
 #+begin_src emacs-lisp
 (use-package highlight-indent-guides
   :config
@@ -396,7 +396,7 @@ Configurations for the highlight-indent-guides package, which shown indentation 
 #+end_src
 
 ** Auto Completion
-Configurations for the company package, which provides autocompletion tooltips:
+Configurations for the ~company~ package, which provides autocompletion tooltips:
 #+begin_src emacs-lisp
 (use-package company
   :pin gnu
@@ -407,7 +407,7 @@ Configurations for the company package, which provides autocompletion tooltips:
 #+end_src
 
 ** Text Folding
-Configurations for the origami package, which allows code blocks to be folded:
+Configurations for the ~origami~ package, which allows code blocks to be folded:
 #+begin_src emacs-lisp
 (use-package origami
   :requires (dash s)
@@ -418,13 +418,13 @@ Configurations for the origami package, which allows code blocks to be folded:
 * Languages
 
 ** Haskell
-Configurations for the haskell-mode package, which provides haskell keyword highlighting:
+Configurations for the ~haskell-mode~ package, which provides Haskell keyword highlighting:
 #+begin_src emacs-lisp
 (use-package haskell-mode)
 #+end_src
 
 ** Markdown
-Configurations for the markdown-mode package, which provides markdown keyword highlighting:
+Configurations for the ~markdown-mode~ package, which provides markdown keyword highlighting:
 #+begin_src emacs-lisp
 (use-package markdown-mode
   :mode (("README\\.md\\'" . gfm-mode)
