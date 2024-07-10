@@ -7,7 +7,7 @@ My personal literate emacs configuration
 * Core
 
 ** Configurations
-The standard Emacs configuration clutter the filesystem with extra files, leaving backups, autosaves and lockfiles everywhere.
+The standard Emacs configuration clutters the filesystem with extra files, leaving backups, autosaves and lockfiles everywhere.
 I prefer to keep my filesystem more tidy, hence I neatly store backups and autosaves in a single location.
 I disable lockfiles, since there's only one user at a time.
 #+begin_src emacs-lisp
