@@ -2,7 +2,7 @@
 #+author: Pedro Ângelo
 #+date: 2023-09-07
 
-My personal literate emacs configuration
+My personal literate emacs configuration.
 
 * Core
 
@@ -14,8 +14,7 @@ I disable lockfiles, since there's only one user at a time.
   ;; enable automatic backups
   ;; (setq backup-by-copying t)
   (setq make-backup-files t)
-  ;; save backup files in a specific folder, to avoid cluttering
-  ;; the directory is created automatically
+  ;; save backup files in a specific folder (created automatically) to avoid cluttering
   (setq backup-directory-alist
         `((".*" . ,(expand-file-name "emacs-backups/" temporary-file-directory))))
 
@@ -316,20 +315,21 @@ Configurations for the helpful package, which enhances standard help functions:
 ** Spell Checking
 Configurations for the flyspell package, which provides on-the-fly spell checking.
 
-This package didn't work in the first time I tried to use it.
-The culprit was Flatpak and its containment environment, which I was using to have access to a more recent version of Emacs.
-Instead, I installed Emacs via Snap, and it worked.
+This package didn't work out of the box, due to Flatpak's containment environment.
+I installed Emacs via Snap instead and it worked.
 #+begin_src emacs-lisp
   (require 'flyspell)
 
+  ;; use the aspell spell checker instead of ispell
+  (setq ispell-program-name "aspell")
   ;; flyspell provides an issue message for every word it analyses
   ;; to avoid a slowdown, disable this feature
   (setq flyspell-issue-message-flag nil)
-  (setq ispell-aspell-data-dir "/usr/lib/aspell/")
-  (setq ispell-aspell-dict-dir ispell-aspell-data-dir)
-  ;; (setq ispell-local-dictionary "en_GB")
-  (setq ispell-program-name "aspell")
-  ;; (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_GB"))
+
+  ;; set the default dictionary to British English
+  (setq ispell-dictionary "en_GB")
+  ;; set the default dictionary to Portuguese
+  ;; (setq ispell-dictionary "pt_PT")
 
   ;; enable flyspell in latex mode
   (add-hook 'LaTeX-mode-hook 'flyspell-mode)
