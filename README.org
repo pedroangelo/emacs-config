@@ -347,7 +347,8 @@ Configurations for the ~flyspell~ package, which provides on-the-fly spell check
 Now that spell checking is configured, let's allow for spell checking of several languages at the same time.
 For this, I'm using the ~guess-language~ package.
 
-Configuration for the [[https://github.com/tmalsburg/guess-language.el][~guess-language~]] package, which automatically detects the language being typed and switches spell checker.
+Configuration for the ~guess-language~ package, which automatically detects the language being typed and switches spell checker.
+More info on the package [[https://github.com/tmalsburg/guess-language.el][here]].
 #+begin_src emacs-lisp
   (use-package guess-language
     :ensure t
