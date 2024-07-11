@@ -362,8 +362,8 @@ Configuration for the ~guess-language~ package, which automatically detects the 
     ;; guess languages between portuguese and british
     (setq guess-language-languages '(en pt))
     (setq guess-language-langcodes
-          '((en . ("en_GB" "british"))
-            (pt . ("pt_PT" "portuguese"))))
+          '((en . ("en_GB" "british" "🇬🇧" "English"))
+            (pt . ("pt_PT" "portuguese" "🇵🇹" "Português"))))
     ;; set the minimal length a paragraph needs to have before guess-language-mode changes to its language
     (setq guess-language-min-paragraph-length 35)
     ;; automatically run flyspell-buffer when languages change
