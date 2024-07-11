@@ -13,22 +13,22 @@ I disable lockfiles, since there's only one user at a time.
 #+begin_src emacs-lisp
   ;; enable automatic backups
   ;; (setq backup-by-copying t)
-  (setq make-backup-files t)
+  (setq make-backup-files nil)
   ;; save backup files in a specific folder (created automatically) to avoid cluttering
-  (setq backup-directory-alist
-        `((".*" . ,(expand-file-name "emacs-backups/" temporary-file-directory))))
+  ;; (setq backup-directory-alist
+  ;;       `((".*" . ,(expand-file-name "emacs-backups/" temporary-file-directory))))
 
   ;; enable automatic autosaves
-  (setq auto-save-default t)
+  (setq auto-save-default nil)
   ;; specify the regularity of autosaves
   ;; (setq auto-save-interval 20)
   ;; unless autosaves directory exists, create it
-  (unless (file-exists-p (expand-file-name "emacs-autosaves/" temporary-file-directory))
-    (make-directory (expand-file-name "emacs-autosaves/" temporary-file-directory)))
-  ;; save autosave files in a specific folder, to avoid cluttering
-  (setq auto-save-file-name-transforms
-        ;; `((".*" ,temporary-file-directory t)))
-        `((".*" ,(expand-file-name "emacs-autosaves/" temporary-file-directory) t)))
+  ;; (unless (file-exists-p (expand-file-name "emacs-autosaves/" temporary-file-directory))
+  ;;   (make-directory (expand-file-name "emacs-autosaves/" temporary-file-directory)))
+  ;; ;; save autosave files in a specific folder, to avoid cluttering
+  ;; (setq auto-save-file-name-transforms
+  ;;       ;; `((".*" ,temporary-file-directory t)))
+  ;;       `((".*" ,(expand-file-name "emacs-autosaves/" temporary-file-directory) t)))
 
   ;; do not lock files
   (setq create-lockfiles nil)
@@ -365,7 +365,12 @@ Configuration for the ~guess-language~ package, which automatically detects the 
           '((en . ("en_GB" "british"))
             (pt . ("pt_PT" "portuguese"))))
     ;; set the minimal length a paragraph needs to have before guess-language-mode changes to its language
-    (setq guess-language-min-paragraph-length 35))
+    (setq guess-language-min-paragraph-length 35)
+    ;; automatically run flyspell-buffer when languages change
+    ;; (add-hook 'guess-language-after-detection-functions
+    ;;           (lambda (lang beg end)
+    ;;             (flyspell-region beg end)))
+    )
 #+end_src
 
 Note that ~guess-language~ inspects a paragraph in order to detect language.
