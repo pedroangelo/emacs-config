@@ -5,6 +5,8 @@
 List of tasks to improve my personal emacs configuration
 
 * TODO Tasks:
+- allow backups and autosaves of files with long names:
+  - https://www.reddit.com/r/emacs/comments/t07e7e/file_name_too_long_error/
 - Add M-x all-the-icons-install-fonts for new instalations
 - On README.org, "some useful commands that I don't use but like to keep commented, so I don't forget"
 - https://github.com/yilkalargaw/org-auto-tangle
