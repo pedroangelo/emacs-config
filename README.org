@@ -4,19 +4,25 @@
 
 My personal literate emacs configuration.
 
+Notice that this file serves as my emacs configuration file, but also as a sort of repository for code I've collected.
+Hence, you'll see many commented pieces of code.
+These are configurations which I choose not to use, but still wish to keep around.
+
 * Core
 
 ** Configurations
 The standard Emacs configuration clutters the filesystem with extra files, leaving backups, autosaves and lockfiles everywhere.
 I prefer to keep my filesystem more tidy, hence I neatly store backups and autosaves in a single location.
-I disable lockfiles, since there's only one user at a time.
+I also disable lockfiles: there's no need for them since there's only one user at a time.
 #+begin_src emacs-lisp
   ;; enable automatic backups
-  ;; (setq backup-by-copying t)
   (setq make-backup-files t)
   ;; save backup files in a specific folder (created automatically) to avoid cluttering
   (setq backup-directory-alist
         `((".*" . ,(expand-file-name "emacs-backups/" temporary-file-directory))))
+
+  ;; backup files by copying
+  ;; (setq backup-by-copying t)
   ;; backup symlinks by copying
   ;; (setq backup-by-copying-when-linked t)
 
@@ -29,7 +35,6 @@ I disable lockfiles, since there's only one user at a time.
     (make-directory (expand-file-name "emacs-autosaves/" temporary-file-directory)))
   ;; save autosave files in a specific folder, to avoid cluttering
   (setq auto-save-file-name-transforms
-        ;; `((".*" ,temporary-file-directory t)))
         `((".*" ,(expand-file-name "emacs-autosaves/" temporary-file-directory) t)))
 
   ;; do not lock files
