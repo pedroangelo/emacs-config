@@ -13,22 +13,24 @@ I disable lockfiles, since there's only one user at a time.
 #+begin_src emacs-lisp
   ;; enable automatic backups
   ;; (setq backup-by-copying t)
-  (setq make-backup-files nil)
+  (setq make-backup-files t)
   ;; save backup files in a specific folder (created automatically) to avoid cluttering
-  ;; (setq backup-directory-alist
-  ;;       `((".*" . ,(expand-file-name "emacs-backups/" temporary-file-directory))))
+  (setq backup-directory-alist
+        `((".*" . ,(expand-file-name "emacs-backups/" temporary-file-directory))))
+  ;; backup symlinks by copying
+  ;; (setq backup-by-copying-when-linked t)
 
   ;; enable automatic autosaves
-  (setq auto-save-default nil)
+  (setq auto-save-default t)
   ;; specify the regularity of autosaves
-  ;; (setq auto-save-interval 20)
+  (setq auto-save-interval 20)
   ;; unless autosaves directory exists, create it
-  ;; (unless (file-exists-p (expand-file-name "emacs-autosaves/" temporary-file-directory))
-  ;;   (make-directory (expand-file-name "emacs-autosaves/" temporary-file-directory)))
-  ;; ;; save autosave files in a specific folder, to avoid cluttering
-  ;; (setq auto-save-file-name-transforms
-  ;;       ;; `((".*" ,temporary-file-directory t)))
-  ;;       `((".*" ,(expand-file-name "emacs-autosaves/" temporary-file-directory) t)))
+  (unless (file-exists-p (expand-file-name "emacs-autosaves/" temporary-file-directory))
+    (make-directory (expand-file-name "emacs-autosaves/" temporary-file-directory)))
+  ;; save autosave files in a specific folder, to avoid cluttering
+  (setq auto-save-file-name-transforms
+        ;; `((".*" ,temporary-file-directory t)))
+        `((".*" ,(expand-file-name "emacs-autosaves/" temporary-file-directory) t)))
 
   ;; do not lock files
   (setq create-lockfiles nil)
