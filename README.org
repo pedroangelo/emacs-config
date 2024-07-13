@@ -206,7 +206,7 @@ Setting up package and archives
 #+end_src
 
 From the package ~use-package~, other packages can be installed.
-Hence, ensure it is either already installed, or install it:
+Hence, ensure it is either already installed, or install it.
 #+begin_src emacs-lisp
 (unless (package-installed-p 'use-package)
   (unless package-archive-contents (package-refresh-contents))
@@ -214,6 +214,8 @@ Hence, ensure it is either already installed, or install it:
 #+end_src
 
 *** use-package
+
+Configuration for the ~use-package~ package, which allows to manage several packages more easily by isolating the configurations in a tidy way ([[https://github.com/jwiegley/use-package][Github]]):
 #+begin_src emacs-lisp
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
@@ -245,7 +247,7 @@ Hence, ensure it is either already installed, or install it:
 * Interface
 
 ** Splash Screen
-Configurations for the ~dashboard~ package, which replaces the splash screen with a configurable dashboard:
+Configurations for the ~dashboard~ package, which replaces the splash screen with a configurable dashboard ([[https://github.com/emacs-dashboard/emacs-dashboard][Github]]):
 #+begin_src emacs-lisp
 (use-package dashboard
   :init
@@ -287,7 +289,7 @@ Configurations for the ~dashboard~ package, which replaces the splash screen wit
 #+end_src
 
 ** Windows and Frames
-Configurations for the ~zoom~ package, which automatically resizes windows according to a given ration, giving greater focus on the currently focused window:
+Configurations for the ~zoom~ package, which automatically resizes windows according to a given ration, giving greater focus on the currently focused window ([[https://github.com/cyrus-and/zoom][Github]]):
 #+begin_src emacs-lisp
 (use-package zoom
   :config
@@ -297,12 +299,12 @@ Configurations for the ~zoom~ package, which automatically resizes windows accor
 #+end_src
 
 ** Themes
-Install solarized theme:
+Configurations for the ~solarized-theme~ package, which enables automatic theme switching according to time of day ([[https://github.com/bbatsov/solarized-emacs][Github]]):
 #+begin_src emacs-lisp
 (use-package solarized-theme)
 #+end_src
 
-Configurations for the ~circadian~ package, which enables automatic theme switching according to time of day:
+Configurations for the ~circadian~ package, which enables automatic theme switching according to time of day ([[https://github.com/guidoschmidt/circadian.el][Github]]):
 #+begin_src emacs-lisp
 (use-package circadian
   :config
@@ -316,7 +318,7 @@ Configurations for the ~circadian~ package, which enables automatic theme switch
 #+end_src
 
 ** Focus Enhancing  and Distraction Avoiding
-Configurations for the ~dimmer~ package, which automatically dims all but the currently focused window:
+Configurations for the ~dimmer~ package, which automatically dims all but the currently focused window ([[https://github.com/gonewest818/dimmer.el][Github]]):
 #+begin_src emacs-lisp
 (use-package dimmer
   :config
@@ -328,7 +330,7 @@ Configurations for the ~dimmer~ package, which automatically dims all but the cu
 #+end_src
 
 ** Help
-Configurations for the ~helpful~ package, which enhances standard help functions:
+Configurations for the ~helpful~ package, which enhances standard help functions ([[https://github.com/Wilfred/helpful][Github]]):
 #+begin_src emacs-lisp
 (use-package helpful
   :config
@@ -346,7 +348,7 @@ For spell checking, I use ~flyspell~ and ~aspell~.
 However, ~flyspell~ didn't work out of the box, due to Flatpak's containment environment.
 I installed Emacs via Snap instead and it worked.
 
-Configurations for the ~flyspell~ package, which provides on-the-fly spell checking.
+Configurations for the ~flyspell~ package, which provides on-the-fly spell checking:
 #+begin_src emacs-lisp
   (require 'flyspell)
 
@@ -373,8 +375,7 @@ Configurations for the ~flyspell~ package, which provides on-the-fly spell check
 Now that spell checking is configured, let's allow for spell checking of several languages at the same time.
 For this, I'm using the ~guess-language~ package.
 
-Configuration for the ~guess-language~ package, which automatically detects the language being typed and switches spell checker.
-More info on the package [[https://github.com/tmalsburg/guess-language.el][here]].
+Configuration for the ~guess-language~ package, which automatically detects the language being typed and switches spell checker ([[https://github.com/tmalsburg/guess-language.el][Github]]):
 #+begin_src emacs-lisp
   (use-package guess-language
     :ensure t
@@ -402,14 +403,14 @@ Note that ~guess-language~ inspects a paragraph in order to detect language.
 Hence, the texts in different languages must have at least a empty line between them.
 
 ** Text Highlight
-Configurations for the ~rainbow-mode~ package, which sets the background colour of strings to match the string's colour name.
+Configurations for the ~rainbow-mode~ package, which sets the background colour of strings to match the string's colour name ([[https://github.com/emacsmirror/rainbow-mode][Github]]):
 #+begin_src emacs-lisp
 (use-package rainbow-mode
   :hook (emacs-lisp-mode text-mode lisp-mode))
 #+end_src
 
 ** Indentation
-Configurations for the ~aggressive-indent~ package, which automatically inserts indentation according to the language and scope:
+Configurations for the ~aggressive-indent~ package, which automatically inserts indentation according to the language and scope ([[https://github.com/Malabarba/aggressive-indent-mode][Github]]):
 #+begin_src emacs-lisp
 (use-package aggressive-indent
   :config
@@ -417,7 +418,7 @@ Configurations for the ~aggressive-indent~ package, which automatically inserts 
   (global-aggressive-indent-mode 1))
 #+end_src
 
-Configurations for the ~highlight-indent-guides~ package, which shown indentation guides:
+Configurations for the ~highlight-indent-guides~ package, which shown indentation guides ([[https://github.com/DarthFennec/highlight-indent-guides][Github]]):
 #+begin_src emacs-lisp
 (use-package highlight-indent-guides
   :config
@@ -426,7 +427,7 @@ Configurations for the ~highlight-indent-guides~ package, which shown indentatio
 #+end_src
 
 ** Auto Completion
-Configurations for the ~company~ package, which provides autocompletion tooltips:
+Configurations for the ~company~ package, which provides autocompletion tooltips ([[https://github.com/company-mode/company-mode][Github]] [[http://company-mode.github.io/][webpage]]):
 #+begin_src emacs-lisp
 (use-package company
   :pin gnu
@@ -437,7 +438,7 @@ Configurations for the ~company~ package, which provides autocompletion tooltips
 #+end_src
 
 ** Text Folding
-Configurations for the ~origami~ package, which allows code blocks to be folded:
+Configurations for the ~origami~ package, which allows code blocks to be folded ([[https://github.com/gregsexton/origami.el][Github]]):
 #+begin_src emacs-lisp
 (use-package origami
   :requires (dash s)
@@ -448,13 +449,13 @@ Configurations for the ~origami~ package, which allows code blocks to be folded:
 * Languages
 
 ** Haskell
-Configurations for the ~haskell-mode~ package, which provides Haskell keyword highlighting:
+Configurations for the ~haskell-mode~ package, which provides Haskell keyword highlighting ([[https://github.com/haskell/haskell-mode][Github]]):
 #+begin_src emacs-lisp
 (use-package haskell-mode)
 #+end_src
 
 ** Markdown
-Configurations for the ~markdown-mode~ package, which provides markdown keyword highlighting:
+Configurations for the ~markdown-mode~ package, which provides markdown keyword highlighting ([[https://github.com/defunkt/markdown-mode][Github]]):
 #+begin_src emacs-lisp
 (use-package markdown-mode
   :mode (("README\\.md\\'" . gfm-mode)
