@@ -14,10 +14,10 @@ These are configurations which I choose not to use, but still wish to keep aroun
 Emacs has a ridiculously low garbage collection threshold.
 The default value of ~gc-cons-threshold~ is 800 000 bytes, which amounts to less than 1 MB.
 While garbage collection is not automatically performed once the thresholds, given by ~gc-cons-percentage~ or ~gc-cons-threshold~, are reached, it may happen at any moment.
-Hence, its possible for garbage collection to be triggered several times in a short time.
+Hence, it's possible for garbage collection to be triggered several times in a short time.
 This means constant waiting periods before garbage collection is finalised.
 
-To fix these issues, we're increase the threshold and also force garbage collection when on idle.
+To fix these issues, increase the threshold and also force garbage collection when on idle.
 #+begin_src emacs-lisp
 ;; set threshold for garbage collection at 100MB
 (setq gc-cons-threshold  (* 100 1024 1024))
@@ -26,7 +26,7 @@ To fix these issues, we're increase the threshold and also force garbage collect
 #+end_src
 
 
-** Configurations
+** Backups
 The standard Emacs configuration clutters the filesystem with extra files, leaving backups, autosaves and lockfiles everywhere.
 I prefer to keep my filesystem more tidy, hence I neatly store backups and autosaves in a single location.
 I also disable lockfiles: there's no need for them since there's only one user at a time.
@@ -56,6 +56,8 @@ I also disable lockfiles: there's no need for them since there's only one user a
   ;; do not lock files
   (setq create-lockfiles nil)
 #+end_src
+
+** Configurations
 
 Set global configuration variables:
 #+begin_src emacs-lisp
