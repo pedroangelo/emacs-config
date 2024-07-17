@@ -61,42 +61,42 @@ I also disable lockfiles: there's no need for them since there's only one user a
 
 Set global configuration variables:
 #+begin_src emacs-lisp
-;; display both current line and collumn numbers for pointer
-(setq column-number-mode t)
-(setq line-number-mode t)
+  ;; display both current line and collumn numbers for pointer
+  (setq column-number-mode t)
+  (setq line-number-mode t)
 
-;; ;; display thin cursor
-;; (setq-default cursor-type 'bar)
+  ;; display box cursor
+  (setq-default cursor-type 'box)
 
-;; ;; display line numbers relative to current cursor line
-;; (setq display-line-numbers-type 'relative)
+  ;; ;; display line numbers relative to current cursor line
+  ;; (setq display-line-numbers-type 'relative)
 
-;; use spaces for indentation instead of tabs
-(setq-default indent-tabs-mode nil)
+  ;; use spaces for indentation instead of tabs
+  (setq-default indent-tabs-mode nil)
 
-;; ;; Do not show the startup screen.
-;; (setq inhibit-startup-message t)
+  ;; ;; Do not show the startup screen.
+  ;; (setq inhibit-startup-message t)
 
-;; kill the whole line, including newline, if at collumn zero
-;; kill up to newline if not at collumn zero
-(setq kill-whole-line t)
+  ;; kill the whole line, including newline, if at collumn zero
+  ;; kill up to newline if not at collumn zero
+  (setq kill-whole-line t)
 
-;; Save existing clipboard text into the kill ring before replacing it.
-(setq save-interprogram-paste-before-kill t)
+  ;; Save existing clipboard text into the kill ring before replacing it.
+  (setq save-interprogram-paste-before-kill t)
 
-;; do no save duplicate entries into kill ring
-(setq kill-do-not-save-duplicates t)
+  ;; do no save duplicate entries into kill ring
+  (setq kill-do-not-save-duplicates t)
 
-;; default tab width set to 2 spaces
-(setq-default tab-width 2)
+  ;; default tab width set to 2 spaces
+  (setq-default tab-width 2)
 
-;; wrap text at words (doesn't treat as having a newline at the end)
-(setq-default word-wrap t)
+  ;; wrap text at words (doesn't treat as having a newline at the end)
+  (setq-default word-wrap t)
 
-;; place custom-set-variables and custom-set-faces into their own file
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(when (file-exists-p custom-file)
-(load custom-file))
+  ;; place custom-set-variables and custom-set-faces into their own file
+  (setq custom-file (concat user-emacs-directory "custom.el"))
+  (when (file-exists-p custom-file)
+  (load custom-file))
 #+end_src
 
 Enable / disable modes:
