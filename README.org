@@ -14,10 +14,10 @@ These are configurations which I choose not to use, but still wish to keep aroun
 Emacs has a ridiculously low garbage collection threshold.
 The default value of ~gc-cons-threshold~ is 800 000 bytes, which amounts to less than 1 MB.
 While garbage collection is not automatically performed once the thresholds, given by ~gc-cons-percentage~ or ~gc-cons-threshold~, are reached, it may happen at any moment.
-Hence, its possible for garbage collection to be triggered several times in a short time.
+Hence, it's possible for garbage collection to be triggered several times in a short time.
 This means constant waiting periods before garbage collection is finalised.
 
-To fix these issues, we're increase the threshold and also force garbage collection when on idle.
+To fix these issues, increase the threshold and also force garbage collection when on idle.
 #+begin_src emacs-lisp
 ;; set threshold for garbage collection at 100MB
 (setq gc-cons-threshold  (* 100 1024 1024))
@@ -26,7 +26,7 @@ To fix these issues, we're increase the threshold and also force garbage collect
 #+end_src
 
 
-** Configurations
+** Backups
 The standard Emacs configuration clutters the filesystem with extra files, leaving backups, autosaves and lockfiles everywhere.
 I prefer to keep my filesystem more tidy, hence I neatly store backups and autosaves in a single location.
 I also disable lockfiles: there's no need for them since there's only one user at a time.
@@ -57,44 +57,46 @@ I also disable lockfiles: there's no need for them since there's only one user a
   (setq create-lockfiles nil)
 #+end_src
 
+** Configurations
+
 Set global configuration variables:
 #+begin_src emacs-lisp
-;; display both current line and collumn numbers for pointer
-(setq column-number-mode t)
-(setq line-number-mode t)
+  ;; display both current line and collumn numbers for pointer
+  (setq column-number-mode t)
+  (setq line-number-mode t)
 
-;; ;; display thin cursor
-;; (setq-default cursor-type 'bar)
+  ;; display box cursor
+  (setq-default cursor-type 'box)
 
-;; ;; display line numbers relative to current cursor line
-;; (setq display-line-numbers-type 'relative)
+  ;; ;; display line numbers relative to current cursor line
+  ;; (setq display-line-numbers-type 'relative)
 
-;; use spaces for indentation instead of tabs
-(setq-default indent-tabs-mode nil)
+  ;; use spaces for indentation instead of tabs
+  (setq-default indent-tabs-mode nil)
 
-;; ;; Do not show the startup screen.
-;; (setq inhibit-startup-message t)
+  ;; ;; Do not show the startup screen.
+  ;; (setq inhibit-startup-message t)
 
-;; kill the whole line, including newline, if at collumn zero
-;; kill up to newline if not at collumn zero
-(setq kill-whole-line t)
+  ;; kill the whole line, including newline, if at collumn zero
+  ;; kill up to newline if not at collumn zero
+  (setq kill-whole-line t)
 
-;; Save existing clipboard text into the kill ring before replacing it.
-;;(setq save-interprogram-paste-before-kill t)
+  ;; Save existing clipboard text into the kill ring before replacing it.
+  (setq save-interprogram-paste-before-kill t)
 
-;; do no save duplicate entries into kill ring
-(setq kill-do-not-save-duplicates t)
+  ;; do no save duplicate entries into kill ring
+  (setq kill-do-not-save-duplicates t)
 
-;; default tab width set to 2 spaces
-(setq-default tab-width 2)
+  ;; default tab width set to 2 spaces
+  (setq-default tab-width 2)
 
-;; wrap text at words (doesn't treat as having a newline at the end)
-(setq-default word-wrap t)
+  ;; wrap text at words (doesn't treat as having a newline at the end)
+  (setq-default word-wrap t)
 
-;; place custom-set-variables and custom-set-faces into their own file
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(when (file-exists-p custom-file)
-(load custom-file))
+  ;; place custom-set-variables and custom-set-faces into their own file
+  (setq custom-file (concat user-emacs-directory "custom.el"))
+  (when (file-exists-p custom-file)
+  (load custom-file))
 #+end_src
 
 Enable / disable modes:
