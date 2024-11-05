@@ -7,7 +7,6 @@ List of tasks to improve my personal emacs configuration
 * TODO Tasks:
 - add table of contents to README:
   - link to headings with [[*Core][Core]]
-- do not minimize links: (setq org-descriptive-links nil)
 - grip mode https://github.com/seagle0128/grip-mode
 - synonyms
 - deleting rectangles with

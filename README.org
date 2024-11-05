@@ -97,6 +97,9 @@ Set global configuration variables:
   (setq custom-file (concat user-emacs-directory "custom.el"))
   (when (file-exists-p custom-file)
   (load custom-file))
+
+  ;; show hyperlinks as the underlying plain text
+  (setq org-descriptive-links nil)
 #+end_src
 
 Enable / disable modes:
