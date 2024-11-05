@@ -80,7 +80,7 @@ Set global configuration variables:
 (setq kill-whole-line t)
 
 ;; Save existing clipboard text into the kill ring before replacing it.
-(setq save-interprogram-paste-before-kill t)
+;;(setq save-interprogram-paste-before-kill t)
 
 ;; do no save duplicate entries into kill ring
 (setq kill-do-not-save-duplicates t)

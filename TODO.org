@@ -5,6 +5,12 @@
 List of tasks to improve my personal emacs configuration
 
 * TODO Tasks:
+- add table of contents to README:
+  - link to headings with [[*Core][Core]]
+- do not minimize links: (setq org-descriptive-links nil)
+- grip mode https://github.com/seagle0128/grip-mode
+- synonyms
+- deleting rectangles with
 - allow backups and autosaves of files with long names:
   - https://www.reddit.com/r/emacs/comments/t07e7e/file_name_too_long_error/
 - Add M-x all-the-icons-install-fonts for new instalations
