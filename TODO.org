@@ -5,6 +5,9 @@
 List of tasks to improve my personal emacs configuration
 
 * TODO Tasks:
+- latex preview
+  - install latex-preview-pane to show latex window
+  - work with zoom package
 - add table of contents to README:
   - link to headings with [[*Core][Core]]
 - grip mode https://github.com/seagle0128/grip-mode
