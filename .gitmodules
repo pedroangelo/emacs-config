@@ -4,3 +4,6 @@
 [submodule "theme-rotation.el"]
 	path = packages/theme-rotation
 	url = git@github.com:pedroangelo/theme-rotation.el.git
+[submodule "packages/freest-mode"]
+	path = packages/freest-mode
+	url = git@github.com:freest-lang/freest-mode.git

@@ -476,6 +476,16 @@ Configurations for the ~markdown-mode~ package, which provides markdown keyword 
 ;; (add-hook 'latex-mode-hook 'whitespace-mode)
 #+end_src
 
+Configurations for the ~freest-mode~ package, which provides FreeST keyword highlighting ([[https://github.com/freest-lang/freest-mode][Github]]):
+** FreeST
+#+begin_src emacs-lisp
+(add-to-list 'load-path (expand-file-name "packages/freest-mode" user-emacs-directory))
+
+(use-package freest-mode
+  :load-path "~/.emacs.d/packages/freest-mode"
+  :mode (("\\.fst\\'" . freest-mode)))
+#+end_src
+
 * Miscellaneous
 
 ** Org-mode
