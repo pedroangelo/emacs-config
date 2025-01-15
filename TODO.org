@@ -5,6 +5,8 @@
 List of tasks to improve my personal emacs configuration
 
 * TODO Tasks:
+- org mode html export with custom themes
+  - readthedocs
 - latex preview
   - install latex-preview-pane to show latex window
   - work with zoom package
