@@ -5,6 +5,9 @@
 List of tasks to improve my personal emacs configuration
 
 * TODO Tasks:
+- IDE like features, sticky header:
+  - https://github.com/joaotavora/breadcrumb
+  - https://github.com/alphapapa/topsy.el
 - org mode html export with custom themes
   - readthedocs
 - latex preview

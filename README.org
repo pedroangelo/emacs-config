@@ -25,7 +25,6 @@ To fix these issues, increase the threshold and also force garbage collection wh
 (run-with-idle-timer 4 t (lambda () (garbage-collect)))
 #+end_src
 
-
 ** Backups
 The standard Emacs configuration clutters the filesystem with extra files, leaving backups, autosaves and lockfiles everywhere.
 I prefer to keep my filesystem more tidy, hence I neatly store backups and autosaves in a single location.
@@ -322,7 +321,7 @@ Configurations for the ~circadian~ package, which enables automatic theme switch
   (circadian-setup))
 #+end_src
 
-** Focus Enhancing  and Distraction Avoiding
+** Focus Enhancing and Distraction Avoiding
 Configurations for the ~dimmer~ package, which automatically dims all but the currently focused window ([[https://github.com/gonewest818/dimmer.el][Github]]):
 #+begin_src emacs-lisp
 (use-package dimmer
