@@ -8,6 +8,7 @@ List of tasks to improve my personal emacs configuration
 - IDE like features, sticky header:
   - https://github.com/joaotavora/breadcrumb
   - https://github.com/alphapapa/topsy.el
+  - https://github.com/JasZhe/window-stool
 - org mode html export with custom themes
   - readthedocs
 - latex preview
