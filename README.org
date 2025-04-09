@@ -19,10 +19,10 @@ This means constant waiting periods before garbage collection is finalised.
 
 To fix these issues, increase the threshold and also force garbage collection when on idle.
 #+begin_src emacs-lisp
-  ;; set threshold for garbage collection at 100MB
-  (setq gc-cons-threshold  (* 100 1024 1024))
-  ;; trigger garbage collection 4 seconds after emacs goes idle
-  (run-with-idle-timer 4 t (lambda () (garbage-collect)))
+;; set threshold for garbage collection at 100MB
+(setq gc-cons-threshold  (* 100 1024 1024))
+;; trigger garbage collection 4 seconds after emacs goes idle
+(run-with-idle-timer 4 t (lambda () (garbage-collect)))
 #+end_src
 
 ** Backups
@@ -103,149 +103,149 @@ Set global configuration variables:
 
 Enable / disable modes:
 #+begin_src emacs-lisp
-  ;; ;; save previous emacs session
-  ;; (desktop-save-mode 1)
+;; ;; save previous emacs session
+;; (desktop-save-mode 1)
 
-  ;; disable electric-indent-mode
-  (electric-indent-mode -1)
+;; disable electric-indent-mode
+(electric-indent-mode -1)
 
-  ;; update buffer when file changes on disk
-  (global-auto-revert-mode 1)
+;; update buffer when file changes on disk
+(global-auto-revert-mode 1)
 
-  ;; display line numbers
-  (global-display-line-numbers-mode t)
+;; display line numbers
+(global-display-line-numbers-mode t)
 
-  ;; highlight current line
-  (global-hl-line-mode t)
+;; highlight current line
+(global-hl-line-mode t)
 
-  ;; ;; wrap text at words (treats as having a newline at the end)
-  ;; (global-visual-line-mode t)
+;; ;; wrap text at words (treats as having a newline at the end)
+;; (global-visual-line-mode t)
 
-  ;; do not display menu bar, tool bar and scroll bar
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
+;; do not display menu bar, tool bar and scroll bar
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
-  ;; remember and restore the last cursor location of opened files
-  (save-place-mode 1)
+;; remember and restore the last cursor location of opened files
+(save-place-mode 1)
 
-  ;; display matching parenthesis
-  (show-paren-mode 1)
+;; display matching parenthesis
+(show-paren-mode 1)
 #+end_src
 
 Customise key bindings:
 #+begin_src emacs-lisp
-  ;; unset key bind to suspend emacs
-  (when (display-graphic-p)
-    (global-unset-key (kbd "C-z"))
-    (global-unset-key (kbd "C-x C-z")))
+;; unset key bind to suspend emacs
+(when (display-graphic-p)
+  (global-unset-key (kbd "C-z"))
+  (global-unset-key (kbd "C-x C-z")))
 #+end_src
 
 ** Utilities
 Custom functions:
 #+begin_src emacs-lisp
-  (defun file-to-string (file)
-    "Read file contents and return as string"
-    (with-temp-buffer
-      (insert-file-contents file)
-      (buffer-string)))
+(defun file-to-string (file)
+  "Read file contents and return as string"
+  (with-temp-buffer
+    (insert-file-contents file)
+    (buffer-string)))
 
-  (defun string-reset-width (string)
-    "Remove all newline characters from string, effectively adjusting the width to
-    size of string"
-    (replace-regexp-in-string "\n" "" string))
+(defun string-reset-width (string)
+  "Remove all newline characters from string, effectively adjusting the width to
+  size of string"
+  (replace-regexp-in-string "\n" "" string))
 
-  (defun string-nth (n string)
-    "Obtain char at the nth position in the string"
-    (substring string n (+ n 1)))
+(defun string-nth (n string)
+  "Obtain char at the nth position in the string"
+  (substring string n (+ n 1)))
 
-  ;; (defun split-string-max-length (string max-length)
-  ;;   "Split a string into substrings with a max length of max-length"
-  ;;   (let ((new-string nil)
-  ;;         (rest-string string))
-  ;;     (let ((number-substrings (if (= 0 (mod (length string) max-length))
-  ;;                                  (/ (length string) max-length)
-  ;;                                (+ 1 (/ (length string) max-length)))))
-  ;;       (progn
-  ;;         (dotimes (number number-substrings)
-  ;;           (progn
-  ;;             (setq new-string (concat new-string
-  ;;                                      (seq-take rest-string max-length) "\n"))
-  ;;             (setq rest-string (seq-drop rest-string max-length))))
-  ;;         new-string))))
+;; (defun split-string-max-length (string max-length)
+;;   "Split a string into substrings with a max length of max-length"
+;;   (let ((new-string nil)
+;;         (rest-string string))
+;;     (let ((number-substrings (if (= 0 (mod (length string) max-length))
+;;                                  (/ (length string) max-length)
+;;                                (+ 1 (/ (length string) max-length)))))
+;;       (progn
+;;         (dotimes (number number-substrings)
+;;           (progn
+;;             (setq new-string (concat new-string
+;;                                      (seq-take rest-string max-length) "\n"))
+;;             (setq rest-string (seq-drop rest-string max-length))))
+;;         new-string))))
 
-  (defun string-adjust-width (string width)
-    "Adjust string width to width by moving newlines"
-    (let* ((clean-string (replace-regexp-in-string "\n" "" string))
-           (length-string (length clean-string))
-           (number-lines (ceiling (/ (float length-string) width)))
-           (partition-size (ceiling (/ (float length-string) number-lines))))
-      (if (< length-string width)
-          clean-string
-        (string-join (seq-partition clean-string partition-size) "\n"))))
+(defun string-adjust-width (string width)
+  "Adjust string width to width by moving newlines"
+  (let* ((clean-string (replace-regexp-in-string "\n" "" string))
+         (length-string (length clean-string))
+         (number-lines (ceiling (/ (float length-string) width)))
+         (partition-size (ceiling (/ (float length-string) number-lines))))
+    (if (< length-string width)
+        clean-string
+      (string-join (seq-partition clean-string partition-size) "\n"))))
 
-  (setq personal-quote-list
-        (split-string (file-to-string "~/MEGA/Hobbies e Interesses/Quotes") "\n"))
-  (setq personal-quote-list-formatted
-        (mapcar
-          (lambda (quote)
-            (string-adjust-width quote (truncate (* (window-width) 0.95))))
-          personal-quote-list))
+(setq personal-quote-list
+      (split-string (file-to-string "~/MEGA/Hobbies e Interesses/Quotes") "\n"))
+(setq personal-quote-list-formatted
+      (mapcar
+        (lambda (quote)
+          (string-adjust-width quote (truncate (* (window-width) 0.95))))
+        personal-quote-list))
 #+end_src
 
 ** Package Management
 *** Instalation
 Setting up package and archives
 #+begin_src emacs-lisp
-  (require 'package)
+(require 'package)
 
-  ;; only needed for emacs versions prior to 27
-  (when (< emacs-major-version 27)
-    (package-initialize))
+;; only needed for emacs versions prior to 27
+(when (< emacs-major-version 27)
+  (package-initialize))
 
-  (add-to-list 'package-archives
-               '("melpa" . "http://melpa.org/packages/") t)
-  (add-to-list 'package-archives
-               '("gnu" . "https://elpa.gnu.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("gnu" . "https://elpa.gnu.org/packages/") t)
 #+end_src
 
 From the package ~use-package~, other packages can be installed.
 Hence, ensure it is either already installed, or install it.
 #+begin_src emacs-lisp
-  (unless (package-installed-p 'use-package)
-    (unless package-archive-contents (package-refresh-contents))
-    (package-install 'use-package))
+(unless (package-installed-p 'use-package)
+  (unless package-archive-contents (package-refresh-contents))
+  (package-install 'use-package))
 #+end_src
 
 *** use-package
 
 Configuration for the ~use-package~ package, which allows to manage several packages more easily by isolating the configurations in a tidy way ([[https://github.com/jwiegley/use-package][Github]]):
 #+begin_src emacs-lisp
-  (eval-when-compile
-    ;; Following line is not needed if use-package.el is in ~/.emacs.d
-    (require 'use-package))
+(eval-when-compile
+  ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  (require 'use-package))
 
-  ;; automatically install packages not present already
-  (require 'use-package-ensure)
-  (setq use-package-always-ensure t)
+;; automatically install packages not present already
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
 
-  ;; ;; automatically update outdated packages
-  ;; (use-package auto-package-update
-  ;;   :config
-  ;;   (setq auto-package-update-delete-old-versions t)
-  ;;   (setq auto-package-update-hide-results t)
-  ;;   (auto-package-update-maybe))
+;; ;; automatically update outdated packages
+;; (use-package auto-package-update
+;;   :config
+;;   (setq auto-package-update-delete-old-versions t)
+;;   (setq auto-package-update-hide-results t)
+;;   (auto-package-update-maybe))
 #+end_src
 
 *** Libraries
 #+begin_src emacs-lisp
-  (use-package dash
-    :pin gnu)
+(use-package dash
+  :pin gnu)
 
-  (use-package seq
-    :pin gnu)
+(use-package seq
+  :pin gnu)
 
-  (use-package s)
+(use-package s)
 #+end_src
 
 * Interface
@@ -253,96 +253,96 @@ Configuration for the ~use-package~ package, which allows to manage several pack
 ** Splash Screen
 Configurations for the ~dashboard~ package, which replaces the splash screen with a configurable dashboard ([[https://github.com/emacs-dashboard/emacs-dashboard][Github]]):
 #+begin_src emacs-lisp
-  (use-package dashboard
-    :init
-    ;; set the title
-    (setq dashboard-banner-logo-title "Emacs Dashboard")
-    ;; set the banner
-    (setq dashboard-startup-banner 'logo)
-    ;; center content
-    (setq dashboard-center-content t)
-    ;; set dashboard items
-    (setq dashboard-items '((bookmarks . 5)
-                            (recents  . 5)))
-    (use-package all-the-icons
-      :if (display-graphic-p))
-    ;; use all-the-icons package
-    ;; don't forget to M-x all-the-icons-install-fonts
-    (setq dashboard-icon-type 'all-the-icons)
-    ;; add icons to the widget headings and their items
-    (setq dashboard-set-heading-icons t)
-    (setq dashboard-set-file-icons t)
-    ;; show navigator below the banner
-    (setq dashboard-set-navigator t)
-    ;; show info about the packages loaded and the init time:
-    (setq dashboard-set-init-info t)
-    ;; Format: "(icon title help action face prefix suffix)"
-    (setq dashboard-navigator-buttons
-          `(;; line1
-            ((,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
-              "Reload Configs" "Reload configurations from dot files"
-              (lambda (&rest _) (load-file (expand-file-name "init.el" user-emacs-directory)))
-              nil "" ""))))
-    (setq dashboard-footer-messages personal-quote-list-formatted)
-    (setq dashboard-footer-icon (all-the-icons-faicon "quote-left"
-                                                      :height 1.1
-                                                      :v-adjust -0.05
-                                                      :face 'font-lock-keyword-face))
-    :config
-    (dashboard-setup-startup-hook))
+(use-package dashboard
+  :init
+  ;; set the title
+  (setq dashboard-banner-logo-title "Emacs Dashboard")
+  ;; set the banner
+  (setq dashboard-startup-banner 'logo)
+  ;; center content
+  (setq dashboard-center-content t)
+  ;; set dashboard items
+  (setq dashboard-items '((bookmarks . 5)
+                          (recents  . 5)))
+  (use-package all-the-icons
+    :if (display-graphic-p))
+  ;; use all-the-icons package
+  ;; don't forget to M-x all-the-icons-install-fonts
+  (setq dashboard-icon-type 'all-the-icons)
+  ;; add icons to the widget headings and their items
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  ;; show navigator below the banner
+  (setq dashboard-set-navigator t)
+  ;; show info about the packages loaded and the init time:
+  (setq dashboard-set-init-info t)
+  ;; Format: "(icon title help action face prefix suffix)"
+  (setq dashboard-navigator-buttons
+        `(;; line1
+          ((,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
+            "Reload Configs" "Reload configurations from dot files"
+            (lambda (&rest _) (load-file (expand-file-name "init.el" user-emacs-directory)))
+            nil "" ""))))
+  (setq dashboard-footer-messages personal-quote-list-formatted)
+  (setq dashboard-footer-icon (all-the-icons-faicon "quote-left"
+                                                    :height 1.1
+                                                    :v-adjust -0.05
+                                                    :face 'font-lock-keyword-face))
+  :config
+  (dashboard-setup-startup-hook))
 #+end_src
 
 ** Windows and Frames
 Configurations for the ~zoom~ package, which automatically resizes windows according to a given ration, giving greater focus on the currently focused window ([[https://github.com/cyrus-and/zoom][Github]]):
 #+begin_src emacs-lisp
-  (use-package zoom
-    :config
-    (zoom-mode t)
-    ;; resize windows according to the golden ratio
-    (custom-set-variables '(zoom-size '(0.618 . 0.618))))
+(use-package zoom
+  :config
+  (zoom-mode t)
+  ;; resize windows according to the golden ratio
+  (custom-set-variables '(zoom-size '(0.618 . 0.618))))
 #+end_src
 
 ** Themes
 Configurations for the ~solarized-theme~ package, which enables automatic theme switching according to time of day ([[https://github.com/bbatsov/solarized-emacs][Github]]):
 #+begin_src emacs-lisp
-  (use-package solarized-theme)
+(use-package solarized-theme)
 #+end_src
 
 Configurations for the ~circadian~ package, which enables automatic theme switching according to time of day ([[https://github.com/guidoschmidt/circadian.el][Github]]):
 #+begin_src emacs-lisp
-  (use-package circadian
-    :config
-    (setq calendar-latitude 41.1)
-    (setq calendar-longitude -8.7)
-    (setq circadian-themes '((:sunrise . solarized-light)
-                             ("5:00" . solarized-light)
-                             (:sunset . solarized-dark)
-                             ("18:30" . solarized-dark)))
-    (circadian-setup))
+(use-package circadian
+  :config
+  (setq calendar-latitude 41.1)
+  (setq calendar-longitude -8.7)
+  (setq circadian-themes '((:sunrise . solarized-light)
+                           ("5:00" . solarized-light)
+                           (:sunset . solarized-dark)
+                           ("18:30" . solarized-dark)))
+  (circadian-setup))
 #+end_src
 
 ** Focus Enhancing and Distraction Avoiding
 Configurations for the ~dimmer~ package, which automatically dims all but the currently focused window ([[https://github.com/gonewest818/dimmer.el][Github]]):
 #+begin_src emacs-lisp
-  (use-package dimmer
-    :config
-    (dimmer-mode t)
-    ;; set dimmer to only apply to foreground
-    (setq dimmer-adjustment-mode :foreground)
-    ;; set dimmer to dim 35%
-    (setq dimmer-fraction 0.35))
+(use-package dimmer
+  :config
+  (dimmer-mode t)
+  ;; set dimmer to only apply to foreground
+  (setq dimmer-adjustment-mode :foreground)
+  ;; set dimmer to dim 35%
+  (setq dimmer-fraction 0.35))
 #+end_src
 
 ** Help
 Configurations for the ~helpful~ package, which enhances standard help functions ([[https://github.com/Wilfred/helpful][Github]]):
 #+begin_src emacs-lisp
-  (use-package helpful
-    :config
-    (global-set-key (kbd "C-h f") #'helpful-callable)
-    (global-set-key (kbd "C-h v") #'helpful-variable)
-    (global-set-key (kbd "C-h k") #'helpful-key)
-    (global-set-key (kbd "C-h x") #'helpful-command)
-    (global-set-key (kbd "C-c C-d") #'helpful-at-point))
+(use-package helpful
+  :config
+  (global-set-key (kbd "C-h f") #'helpful-callable)
+  (global-set-key (kbd "C-h v") #'helpful-variable)
+  (global-set-key (kbd "C-h k") #'helpful-key)
+  (global-set-key (kbd "C-h x") #'helpful-command)
+  (global-set-key (kbd "C-c C-d") #'helpful-at-point))
 #+end_src
 
 * Editing
@@ -409,45 +409,45 @@ Hence, the texts in different languages must have at least a empty line between 
 ** Text Highlight
 Configurations for the ~rainbow-mode~ package, which sets the background colour of strings to match the string's colour name ([[https://github.com/emacsmirror/rainbow-mode][Github]]):
 #+begin_src emacs-lisp
-  (use-package rainbow-mode
-    :hook (emacs-lisp-mode text-mode lisp-mode))
+(use-package rainbow-mode
+  :hook (emacs-lisp-mode text-mode lisp-mode))
 #+end_src
 
 ** Indentation
 Configurations for the ~aggressive-indent~ package, which automatically inserts indentation according to the language and scope ([[https://github.com/Malabarba/aggressive-indent-mode][Github]]):
 #+begin_src emacs-lisp
-  (use-package aggressive-indent
-    :config
-    ;; (add-to-list 'aggressive-indent-excluded-modes 'emacs-lisp-mode)
-    (global-aggressive-indent-mode 1))
+(use-package aggressive-indent
+  :config
+  ;; (add-to-list 'aggressive-indent-excluded-modes 'emacs-lisp-mode)
+  (global-aggressive-indent-mode 1))
 #+end_src
 
 Configurations for the ~highlight-indent-guides~ package, which shown indentation guides ([[https://github.com/DarthFennec/highlight-indent-guides][Github]]):
 #+begin_src emacs-lisp
-  (use-package highlight-indent-guides
-    :config
-    (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-    (setq highlight-indent-guides-method 'character))
+(use-package highlight-indent-guides
+  :config
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (setq highlight-indent-guides-method 'character))
 #+end_src
 
 ** Auto Completion
 Configurations for the ~company~ package, which provides autocompletion tooltips ([[https://github.com/company-mode/company-mode][Github]] [[http://company-mode.github.io/][webpage]]):
 #+begin_src emacs-lisp
-  (use-package company
-    :pin gnu
-    :config
-    ;; (setq company-idle-delay nil)
-    (setq company-dabbrev-downcase nil)
-    (add-hook 'after-init-hook 'global-company-mode))
+(use-package company
+  :pin gnu
+  :config
+  ;; (setq company-idle-delay nil)
+  (setq company-dabbrev-downcase nil)
+  (add-hook 'after-init-hook 'global-company-mode))
 #+end_src
 
 ** Text Folding
 Configurations for the ~origami~ package, which allows code blocks to be folded ([[https://github.com/gregsexton/origami.el][Github]]):
 #+begin_src emacs-lisp
-  (use-package origami
-    :requires (dash s)
-    :config
-    (global-origami-mode))
+(use-package origami
+  :requires (dash s)
+  :config
+  (global-origami-mode))
 #+end_src
 
 * Languages
@@ -455,34 +455,34 @@ Configurations for the ~origami~ package, which allows code blocks to be folded 
 ** Haskell
 Configurations for the ~haskell-mode~ package, which provides Haskell keyword highlighting ([[https://github.com/haskell/haskell-mode][Github]]):
 #+begin_src emacs-lisp
-  (use-package haskell-mode)
+(use-package haskell-mode)
 #+end_src
 
 ** Markdown
 Configurations for the ~markdown-mode~ package, which provides markdown keyword highlighting ([[https://github.com/defunkt/markdown-mode][Github]]):
 #+begin_src emacs-lisp
-  (use-package markdown-mode
-    :mode (("README\\.md\\'" . gfm-mode)
-           ("TODO\\.md\\'" . gfm-mode)
-           ("\\.md\\'" . markdown-mode)
-           ("\\.markdown\\'" . markdown-mode))
-    :init (setq markdown-command "pandoc"))
+(use-package markdown-mode
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("TODO\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "pandoc"))
 #+end_src
 
 ** Latex
 #+begin_src emacs-lisp
-  ;; show whitespaces as dots
-  ;; (add-hook 'latex-mode-hook 'whitespace-mode)
+;; show whitespaces as dots
+;; (add-hook 'latex-mode-hook 'whitespace-mode)
 #+end_src
 
 Configurations for the ~freest-mode~ package, which provides FreeST keyword highlighting ([[https://github.com/freest-lang/freest-mode][Github]]):
 ** FreeST
 #+begin_src emacs-lisp
-  (add-to-list 'load-path (expand-file-name "packages/freest-mode" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "packages/freest-mode" user-emacs-directory))
 
-  (use-package freest-mode
-    :load-path "~/.emacs.d/packages/freest-mode"
-    :mode (("\\.fst\\'" . freest-mode)))
+(use-package freest-mode
+  :load-path "~/.emacs.d/packages/freest-mode"
+  :mode (("\\.fst\\'" . freest-mode)))
 #+end_src
 
 * Miscellaneous
@@ -505,15 +505,15 @@ Configurations for the ~freest-mode~ package, which provides FreeST keyword high
 ** Whisper
 Configurations for the whisper speech-to-text engine:
 #+begin_src emacs-lisp
-  (add-to-list 'load-path (expand-file-name "packages/whisper" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "packages/whisper" user-emacs-directory))
 
-  (use-package whisper
-    :load-path "~/.emacs.d/packages/whisper"
-    :bind ("C-H-r" . whisper-run)
-    :config
-    (setq whisper-install-directory "~/.local/lib"
-          whisper-language "en"
-          whisper-model "base" ;; model options: tiny, base, small, medium, large
-          whisper-translate nil
-          whisper-enable-speed-up nil))
+(use-package whisper
+  :load-path "~/.emacs.d/packages/whisper"
+  :bind ("C-H-r" . whisper-run)
+  :config
+  (setq whisper-install-directory "~/.local/lib"
+        whisper-language "en"
+        whisper-model "base" ;; model options: tiny, base, small, medium, large
+        whisper-translate nil
+        whisper-enable-speed-up nil))
 #+end_src
