@@ -315,9 +315,9 @@ Configurations for the ~circadian~ package, which enables automatic theme switch
   (setq calendar-latitude 41.1)
   (setq calendar-longitude -8.7)
   (setq circadian-themes '((:sunrise . solarized-light)
-                           ("5:00" . solarized-light)
+                           ("6:00" . solarized-light)
                            (:sunset . solarized-dark)
-                           ("18:30" . solarized-dark)))
+                           ("20:00" . solarized-dark)))
   (circadian-setup))
 #+end_src
 
@@ -451,6 +451,12 @@ Configurations for the ~origami~ package, which allows code blocks to be folded 
 #+end_src
 
 * Languages
+
+** Brainfuck
+Configurations for the ~brainfuck-mode~ package, which provides Brainfuck keyword highlighting ([[https://github.com/tom-tan/brainfuck-mode][Github]]):
+#+begin_src emacs-lisp
+(use-package brainfuck-mode)
+#+end_src
 
 ** Haskell
 Configurations for the ~haskell-mode~ package, which provides Haskell keyword highlighting ([[https://github.com/haskell/haskell-mode][Github]]):
