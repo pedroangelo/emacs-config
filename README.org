@@ -505,6 +505,8 @@ Configurations for the ~freest-mode~ package, which provides FreeST keyword high
   (add-hook 'org-mode-hook
             (lambda () 
               (when (display-graphic-p)
+                (setq-local org-image-actual-width
+                            (floor (* (window-pixel-width) 0.7)))
                 (org-display-inline-images t t))))
 #+end_src
 
