@@ -501,15 +501,17 @@ Configurations for the ~freest-mode~ package, which provides FreeST keyword high
   ;; open files with unfolded headings
   (setq org-startup-folded nil)
 
-  ;; display inline images
-  (add-hook 'org-mode-hook
-            (lambda () 
-              (when (display-graphic-p)
-                (setq-local org-image-actual-width
-                            (floor (* (window-pixel-width) 0.7)))
-                (org-display-inline-images t t))))
-  ;; Display image in full size, if there's no width hint of the format
-  ;; #+ATTR_ORG: :width <width>
+  ;; ;; display inline images
+  ;; (add-hook 'org-mode-hook
+  ;;           (lambda () 
+  ;;             (when (display-graphic-p)
+  ;;               (setq-local org-image-actual-width
+  ;;                           (floor (* (window-pixel-width) 0.7)))
+  ;;               (org-display-inline-images t t))))
+
+  ;; Display inline images in orgmode
+  (setq org-startup-with-inline-images t)
+  ;; Set size of displayed inline orgmode images to full size, unless there a width hint (format #+ATTR_ORG: :width <width>)
   (setq org-image-actual-width nil)
 #+end_src
 
