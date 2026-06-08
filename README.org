@@ -506,6 +506,9 @@ Configurations for the ~freest-mode~ package, which provides FreeST keyword high
             (lambda () 
               (when (display-graphic-p)
                 (org-display-inline-images t t))))
+  ;; Display image in full size, if there's no width hint of the format
+  ;; #+ATTR_ORG: :width <width>
+  (setq org-image-actual-width nil)
 #+end_src
 
 ** Whisper
