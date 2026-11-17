@@ -5,6 +5,9 @@
 List of tasks to improve my personal emacs configuration
 
 * TODO Tasks:
+- Add section on useful commands:
+  - C-c C-x C-v -- show inline images
+  - C-c C-x \ -- display entities as UTF-8
 - IDE like features, sticky header:
   - https://github.com/joaotavora/breadcrumb
   - https://github.com/alphapapa/topsy.el

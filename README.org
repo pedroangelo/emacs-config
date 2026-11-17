@@ -506,7 +506,7 @@ Configurations for the ~freest-mode~ package, which provides FreeST keyword high
             (lambda () 
               (when (display-graphic-p)
                 (setq-local org-image-actual-width
-                            (floor (* (window-pixel-width) 0.7)))
+                            (floor (* (window-pixel-width) 0.4)))
                 (org-display-inline-images t t))))
 #+end_src
 
