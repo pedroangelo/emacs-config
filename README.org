@@ -293,7 +293,7 @@ Configurations for the ~dashboard~ package, which replaces the splash screen wit
 #+end_src
 
 ** Windows and Frames
-Configurations for the ~zoom~ package, which automatically resizes windows according to a given ration, giving greater focus on the currently focused window ([[https://github.com/cyrus-and/zoom][Github]]):
+Configurations for the ~zoom~ package, which automatically resizes windows according to a given ratio, giving greater focus on the currently focused window ([[https://github.com/cyrus-and/zoom][Github]]):
 #+begin_src emacs-lisp
 (use-package zoom
   :config
