@@ -481,8 +481,14 @@ Configurations for the ~markdown-mode~ package, which provides markdown keyword 
 ;; (add-hook 'latex-mode-hook 'whitespace-mode)
 #+end_src
 
-Configurations for the ~freest-mode~ package, which provides FreeST keyword highlighting ([[https://github.com/freest-lang/freest-mode][Github]]):
+** Prolog
+Automatically start ~prolog-mode~ when opening ~.pl~ files.
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
+#+end_src
+
 ** FreeST
+Configurations for the ~freest-mode~ package, which provides FreeST keyword highlighting ([[https://github.com/freest-lang/freest-mode][Github]]):
 #+begin_src emacs-lisp
 (add-to-list 'load-path (expand-file-name "packages/freest-mode" user-emacs-directory))
 
